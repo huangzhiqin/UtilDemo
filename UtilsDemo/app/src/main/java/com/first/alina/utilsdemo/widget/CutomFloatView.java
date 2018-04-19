@@ -26,10 +26,12 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
     private int screenHeight;
     private Context context;
     private int minScroll;
+    private int leftImage;
+    private int rightImage;
+    private int top,bottom;
     public CutomFloatView(Context context) {
         super(context);
         this.context=context;
-      //  initView(context);
     }
 
     public CutomFloatView(Context context, AttributeSet attrs) {
@@ -41,13 +43,7 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
     public CutomFloatView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context=context;
-     //   initView(context);
     }
-
-   /* private void initView(Context context){
-        LayoutInflater.from(context).inflate(R.layout.layout_cutom_view,this);
-        floatImge=findViewById(R.id.float_img);
-    }*/
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -64,19 +60,19 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
         super.onTouchEvent(event);
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                downX=event.getRawX();
-                downY=event.getRawY();
+                downX=event.getX();
+                downY=event.getY();
                 break;
             case MotionEvent.ACTION_MOVE:
-                final float xDistance=event.getRawX()-downX;
-                final float yDistance=event.getRawY()-downY;
-                int l,r,t,b;
+                final float xDistance=event.getX()-downX;
+                final float yDistance=event.getY()-downY;
+                int l,r;
                 if (Math.abs(xDistance)>10|| Math.abs(yDistance)>10){
                     l=(int)(getLeft()+xDistance);
                     r=l+width;
-                    t=(int)(getTop()+yDistance);
-                    b=t+height;
-                    Log.e(TAG,"==> l="+l+" r="+r+" t="+t+" b="+b);
+                    top=(int)(getTop()+yDistance);
+                    bottom=top+height;
+                    Log.e(TAG,"==> l="+l+" r="+r+" t="+top+" b="+bottom);
                     if(l<0){
                         l=0;
                         r=l+width;
@@ -84,20 +80,51 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
                         r=screenWidth;
                         l=r-width;
                     }
-                    if(t<0){
-                        t=0;
-                        b=t+height;
-                    }else if(b>screenHeight){
-                        b=screenHeight;
-                        t=b-height;
+                    if(top<0){
+                        bottom=0;
+                        bottom=bottom+height;
+                    }else if(bottom>screenHeight){
+                        bottom=screenHeight;
+                        top=bottom-height;
                     }
-                    this.layout(l,t,r,b);
+                    this.layout(l,top,r,bottom);
 
                 }
+                break;
+            case MotionEvent.ACTION_UP:
+                if (event.getRawX()>=screenWidth/2){
+                    changeImageRes(rightImage);
+                    this.layout(screenWidth-width,top,screenWidth,bottom);
+                }else {
+                    changeImageRes(leftImage);
+                    this.layout(0,top,width,bottom);
+                }
+                Log.e(TAG,"==> up left "+getLeft()+" width= "+width+" top="+top+" bottom="+bottom);
                 break;
 
         }
         return true;
-
     }
+
+    public void setLeftImageRes(int res){
+        this.setImageResource(res);
+        leftImage=res;
+    }
+    public int getLeftImageRes(){
+        return leftImage;
+    }
+
+
+    public void setRightImageRes(int res){
+        this.setImageResource(res);
+        rightImage=res;
+    }
+    public int getRightImageRes(){
+       return rightImage;
+    }
+
+    private void changeImageRes(int res){
+        this.setImageResource(res);
+    }
+
 }
