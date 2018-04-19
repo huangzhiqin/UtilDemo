@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="cailianshe_black_light">#212121</color> <!-- 浅黑 -->
+    <color name="cailianshe_gray_light">#C8C8C8</color> <!-- 浅灰 -->
+
+    <!--钱包-->
+    <color name="dialog_weal_receive_bg">#FFFFFF</color>
+    <color name="dialog_weal_hint_content">#8B0000</color>
+    <color name="dialog_weal_receive_tv">#EC373A</color>
+</resources>
