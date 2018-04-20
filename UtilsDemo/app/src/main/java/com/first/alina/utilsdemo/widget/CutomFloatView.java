@@ -1,5 +1,8 @@
 package com.first.alina.utilsdemo.widget;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.support.v4.view.ViewConfigurationCompat;
 import android.util.AttributeSet;
@@ -7,6 +10,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -32,9 +38,9 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
     private int leftImage;
     private int rightImage;
     private int top,bottom;
-    private boolean isClick;
     private float rawX;
     private float rawY;
+
     public CutomFloatView(Context context) {
         super(context);
         this.context=context;
@@ -67,7 +73,6 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
         super.onTouchEvent(event);
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                isClick=true;
                 downX=event.getX();
                 downY=event.getY();
                 rawX=event.getRawX();
@@ -102,35 +107,33 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                float currentX=event.getX();
-                float currentY=event.getY();
-                Log.e(TAG,"==> xDistance="+Math.abs(event.getRawX()-rawX)+" yDistance="+Math.abs(currentY-downY)+" currentY="+currentY+" downX="+downX+" downY="+downY+" currentX="+currentX);
+                //Log.e(TAG,"==> xDistance="+Math.abs(event.getRawX()-rawX)+" yDistance="+Math.abs(currentY-downY)+" currentY="+currentY+" downX="+downX+" downY="+downY+" currentX="+currentX);
                 if (Math.abs(event.getRawX()-rawX)<=minScroll&&Math.abs(event.getRawY()-rawY)<=minScroll){
-                    Log.e(TAG,"==> 点击事件");
-                    isClick=true;
                     setEnabled(true);
                 }else {
-                    isClick=false;
-                    Log.e(TAG,"==> 拖动事件");
                     setEnabled(false);//在拖动的过程中，禁止View点击事件
                 }
                 if (event.getRawX()>=screenWidth/2){
                     this.layout(screenWidth-width,getTop(),screenWidth,getBottom());
                     changeImageRes(rightImage);
-                    Log.e(TAG,"==> 右边 "+" top="+top+" bottom="+bottom+" screenWidth-width ="+(screenWidth-width)+" getTop "+getTop()+" getBottom "+getBottom());
+                    ObjectAnimator rightAnimator=ObjectAnimator.ofFloat(this,"rotation",-18,9,-18,-9);
+                    rightAnimator.setDuration(1500);
+                    rightAnimator.start();
                 }else {
+                    ObjectAnimator rightAnimator=ObjectAnimator.ofFloat(this,"rotation",18,-9,18,9);
+                    rightAnimator.setDuration(1500);
+                    rightAnimator.start();
                     this.layout(0,getTop(),width,getBottom());
                     changeImageRes(leftImage);
-                    Log.e(TAG,"==>左边 "+" top="+top+" bottom="+bottom+" getTop "+getTop()+" getBottom "+getBottom());
                 }
-                    postInvalidate();
+                AnimatorSet animatorSet=new AnimatorSet();
+
                 break;
             case MotionEvent.ACTION_CANCEL:
                 Log.e(TAG,"==> action_cancel");
                 break;
 
         }
-        Log.e(TAG,"==>isClick "+isClick);
         return true;
     }
 

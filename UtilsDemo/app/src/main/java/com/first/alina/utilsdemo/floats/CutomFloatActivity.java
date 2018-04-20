@@ -1,14 +1,18 @@
 package com.first.alina.utilsdemo.floats;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.first.alina.utilsdemo.MainActivity;
 import com.first.alina.utilsdemo.R;
 import com.first.alina.utilsdemo.widget.CutomFloatView;
+import com.first.alina.utilsdemo.widget.WealDialog;
 
 
 /**
@@ -50,7 +54,23 @@ public class CutomFloatActivity extends Activity {
         cutomFloatView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(CutomFloatActivity.this,"悬浮窗点击事件被触发了",Toast.LENGTH_SHORT).show();
+                final WealDialog dialog=new WealDialog.Builder(CutomFloatActivity.this)
+                        .setTitle("重阳节到啦")
+                        .setMessage("重阳节，重阳节，重阳节，重阳节，重阳节，重阳节")
+                        .setBottomOnClickListener(new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.e(TAG,"==> onClick ");
+                                dialog.dismiss();
+                            }
+                        })
+                        .setRightOnClickListener(new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).create();
+                dialog.show();
             }
         });
 
