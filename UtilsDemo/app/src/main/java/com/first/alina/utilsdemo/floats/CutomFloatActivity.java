@@ -24,7 +24,7 @@ public class CutomFloatActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cutom_float);
         cutomFloatView=findViewById(R.id.cutom_float);
-        cutomFloatView.setLeftImageRes(R.drawable.float_icon);
+        cutomFloatView.setLeftImageRes(R.drawable.float_left);
         cutomFloatView.setRightImageRes(R.drawable.float_right);
         btn1=findViewById(R.id.btn1);
         btn2=findViewById(R.id.btn2);
@@ -45,6 +45,12 @@ public class CutomFloatActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(CutomFloatActivity.this,"按钮3",Toast.LENGTH_SHORT).show();
+            }
+        });
+        cutomFloatView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CutomFloatActivity.this,"悬浮窗点击事件被触发了",Toast.LENGTH_SHORT).show();
             }
         });
 

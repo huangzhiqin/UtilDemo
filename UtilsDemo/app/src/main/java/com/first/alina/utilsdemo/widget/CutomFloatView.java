@@ -6,8 +6,12 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
+import com.first.alina.utilsdemo.R;
 import com.first.alina.utilsdemo.common.ScreenUtils;
 
 
@@ -17,7 +21,6 @@ import com.first.alina.utilsdemo.common.ScreenUtils;
 
 public class CutomFloatView extends android.support.v7.widget.AppCompatImageView{
     private final String TAG="CutomFloatView";
-    private ImageView floatImge;
     private float downX;
     private float downY;
     private int width;
@@ -29,6 +32,9 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
     private int leftImage;
     private int rightImage;
     private int top,bottom;
+    private boolean isClick;
+    private float rawX;
+    private float rawY;
     public CutomFloatView(Context context) {
         super(context);
         this.context=context;
@@ -37,7 +43,6 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
     public CutomFloatView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context=context;
-       // initView(context);
     }
 
     public CutomFloatView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -52,7 +57,9 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
         height=getMeasuredHeight();
         screenHeight= ScreenUtils.getScreenHeight(context);
         screenWidth=ScreenUtils.getScreenWidth(context);
-        minScroll=ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(context));
+        minScroll=ViewConfiguration.get(context).getScaledTouchSlop();
+        setLeftImageRes(leftImage);
+        setEnabled(false);
     }
 
     @Override
@@ -60,19 +67,22 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
         super.onTouchEvent(event);
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
+                isClick=true;
                 downX=event.getX();
                 downY=event.getY();
+                rawX=event.getRawX();
+                rawY=event.getRawY();
                 break;
             case MotionEvent.ACTION_MOVE:
                 final float xDistance=event.getX()-downX;
                 final float yDistance=event.getY()-downY;
                 int l,r;
                 if (Math.abs(xDistance)>10|| Math.abs(yDistance)>10){
+
                     l=(int)(getLeft()+xDistance);
                     r=l+width;
                     top=(int)(getTop()+yDistance);
                     bottom=top+height;
-                    Log.e(TAG,"==> l="+l+" r="+r+" t="+top+" b="+bottom);
                     if(l<0){
                         l=0;
                         r=l+width;
@@ -92,19 +102,38 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                if (event.getRawX()>=screenWidth/2){
-                    changeImageRes(rightImage);
-                    this.layout(screenWidth-width,top,screenWidth,bottom);
+                float currentX=event.getX();
+                float currentY=event.getY();
+                Log.e(TAG,"==> xDistance="+Math.abs(event.getRawX()-rawX)+" yDistance="+Math.abs(currentY-downY)+" currentY="+currentY+" downX="+downX+" downY="+downY+" currentX="+currentX);
+                if (Math.abs(event.getRawX()-rawX)<=minScroll&&Math.abs(event.getRawY()-rawY)<=minScroll){
+                    Log.e(TAG,"==> 点击事件");
+                    isClick=true;
+                    setEnabled(true);
                 }else {
-                    changeImageRes(leftImage);
-                    this.layout(0,top,width,bottom);
+                    isClick=false;
+                    Log.e(TAG,"==> 拖动事件");
+                    setEnabled(false);//在拖动的过程中，禁止View点击事件
                 }
-                Log.e(TAG,"==> up left "+getLeft()+" width= "+width+" top="+top+" bottom="+bottom);
+                if (event.getRawX()>=screenWidth/2){
+                    this.layout(screenWidth-width,getTop(),screenWidth,getBottom());
+                    changeImageRes(rightImage);
+                    Log.e(TAG,"==> 右边 "+" top="+top+" bottom="+bottom+" screenWidth-width ="+(screenWidth-width)+" getTop "+getTop()+" getBottom "+getBottom());
+                }else {
+                    this.layout(0,getTop(),width,getBottom());
+                    changeImageRes(leftImage);
+                    Log.e(TAG,"==>左边 "+" top="+top+" bottom="+bottom+" getTop "+getTop()+" getBottom "+getBottom());
+                }
+                    postInvalidate();
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                Log.e(TAG,"==> action_cancel");
                 break;
 
         }
+        Log.e(TAG,"==>isClick "+isClick);
         return true;
     }
+
 
     public void setLeftImageRes(int res){
         this.setImageResource(res);
