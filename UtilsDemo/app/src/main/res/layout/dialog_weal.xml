@@ -11,19 +11,32 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:src="@drawable/close_icon" />
+    <RelativeLayout
+        android:id="@+id/dialog_top"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_marginLeft="20dp">
+
+        <ImageView
+            android:layout_width="118dp"
+            android:layout_height="33dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/weal_dialog_top_after_icon"/>
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/dialog_layout_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dialog_close"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/dialog_top"
+        android:layout_marginTop="-10dp"
         android:background="@drawable/author_column_bg_night">
         <TextView
             android:id="@+id/festival"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="重阳节"
+            android:text="重阳节，送您优惠券"
             android:gravity="center_horizontal"
             android:layout_marginTop="32dp"
             android:textColor="@color/dialog_weal_receive_bg"
@@ -67,4 +80,11 @@
             android:layout_marginBottom="24dp"
             android:textColor="@color/dialog_weal_receive_bg"/>
     </RelativeLayout>
+    <ImageView
+        android:id="@+id/dialog_top_before"
+        android:layout_width="160dp"
+        android:layout_height="85dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="-10dp"
+        android:background="@drawable/weal_dialog_top_befor_icon"/>
 </RelativeLayout>

@@ -54,7 +54,7 @@ public class CutomFloatActivity extends Activity {
         cutomFloatView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final WealDialog dialog=new WealDialog.Builder(CutomFloatActivity.this)
+                 WealDialog dialog=new WealDialog.Builder(CutomFloatActivity.this)
                         .setTitle("重阳节到啦")
                         .setMessage("重阳节，重阳节，重阳节，重阳节，重阳节，重阳节")
                         .setBottomOnClickListener(new DialogInterface.OnClickListener() {
