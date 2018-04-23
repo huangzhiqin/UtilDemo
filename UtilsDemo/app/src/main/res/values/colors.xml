@@ -10,4 +10,10 @@
     <color name="dialog_weal_receive_bg">#FFFFFF</color>
     <color name="dialog_weal_hint_content">#8B0000</color>
     <color name="dialog_weal_receive_tv">#EC373A</color>
+    <color name="dialog_weal_bg_up">#F65538</color>
+    <color name="dialog_weal_bg_down">#DB3B37</color>
+    <color name="dialog_weal_money">#EF4536</color>
+    <color name="dialog_weal_money_coupon">#434343</color>
+    <color name="dialog_weal_coupon_time">#737373</color>
+
 </resources>

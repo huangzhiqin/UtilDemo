@@ -14,6 +14,9 @@ import com.first.alina.utilsdemo.R;
 import com.first.alina.utilsdemo.widget.CutomFloatView;
 import com.first.alina.utilsdemo.widget.WealDialog;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by alina on 2018/4/18.
@@ -54,9 +57,14 @@ public class CutomFloatActivity extends Activity {
         cutomFloatView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<String> list=new ArrayList();
+                for (int i=0;i<3;i++){
+                    list.add("10"+i);
+                }
                  WealDialog dialog=new WealDialog.Builder(CutomFloatActivity.this)
                         .setTitle("重阳节到啦")
                         .setMessage("重阳节，重阳节，重阳节，重阳节，重阳节，重阳节")
+                         .setDataList(list)
                         .setBottomOnClickListener(new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

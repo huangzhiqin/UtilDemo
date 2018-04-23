@@ -11,9 +11,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.first.alina.utilsdemo.R;
+import com.first.alina.utilsdemo.adapters.DialogWealAdapter;
+
+import java.util.List;
 
 
 /**
@@ -41,10 +45,13 @@ public class WealDialog extends Dialog {
         private ImageView closeImg;
         private TextView messageTv;
         private TextView titleTv;
+        private ListView listView;
         private String title;
         private String message;
+        private List<String> list;
         private OnClickListener onClickListener;
         private OnClickListener rightOnClickListener;
+        private DialogWealAdapter dialogWealAdapter;
 
         public Builder (Context context){
             this.context=context;
@@ -57,6 +64,10 @@ public class WealDialog extends Dialog {
 
         public Builder setMessage(String message){
             this.message=message;
+            return this;
+        }
+        public Builder setDataList(List<String> list){
+            this.list=list;
             return this;
         }
 
@@ -80,6 +91,8 @@ public class WealDialog extends Dialog {
             titleTv=view.findViewById(R.id.festival);
             closeImg=view.findViewById(R.id.dialog_close);
             bottomCloseTv.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);//添加下划线
+            listView=view.findViewById(R.id.dialog_coupon_listview);
+            listView.setDividerHeight(0);
             wealDialog.setCanceledOnTouchOutside(true);
             titleTv.setText(title);
             messageTv.setText(message);
@@ -96,6 +109,12 @@ public class WealDialog extends Dialog {
                     onClickListener.onClick(wealDialog, DialogInterface.BUTTON_NEGATIVE);
                 }
             });
+            if (list!=null){
+                dialogWealAdapter=new DialogWealAdapter(context);
+                dialogWealAdapter.setData(list);
+                listView.setAdapter(dialogWealAdapter);
+            }
+
             return wealDialog;
         }
     }
