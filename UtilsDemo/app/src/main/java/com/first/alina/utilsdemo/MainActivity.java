@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final WealDialog dialog=new WealDialog.Builder(MainActivity.this)
                         .setTitle("重阳节到啦")
-                        .setMessage("重阳节，重阳节，重阳节，重阳节，重阳节，重阳节")
+                        .setMessage1("重阳节，重阳节，重阳节，重阳节，重阳节，重阳节")
                         .setBottomOnClickListener(new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

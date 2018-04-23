@@ -62,7 +62,7 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
     }
 
     private void initView() {
-        setLeftImageRes(leftImage);
+
         statusBarHeight = ScreenUtils.getStatusHeight(context);
         screenHeight = ScreenUtils.getScreenHeight(context);
         screenWidth = ScreenUtils.getScreenWidth(context);
@@ -81,6 +81,7 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         width = getMeasuredWidth();
         height = getMeasuredHeight();
+        setLeftImageRes(leftImage);
         Log.e(TAG,"==> onMeasure");
     }
 
@@ -128,17 +129,19 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
                 } else {
                     setEnabled(false);//在拖动的过程中，禁止View点击事件
                 }
+                Log.e(TAG,"==>ACTION_UP disX="+(Math.abs(event.getRawX() - rawX))+" disY="+(Math.abs(event.getRawY() - rawY))+" minScroll="+minScroll);
                 if (event.getRawX() >= screenWidth / 2) {
-                    this.layout(screenWidth - width, top, screenWidth, bottom);
-                    changeImageRes(rightImage);
                     ObjectAnimator rightAnimator = ObjectAnimator.ofFloat(this, "rotation", -18, 9, -18, -9);
                     rightAnimator.setDuration(1500);
                     rightAnimator.start();
+                    this.layout(screenWidth - width, top, screenWidth, bottom);
+                    changeImageRes(rightImage);
+
                 } else {
                     ObjectAnimator rightAnimator = ObjectAnimator.ofFloat(this, "rotation", 18, -9, 18, 9);
                     rightAnimator.setDuration(1500);
                     rightAnimator.start();
-                    this.layout(0, top, width,bottom);
+                    this.layout(0, getTop(), width,getBottom());
                     changeImageRes(leftImage);
                 }
                 break;
@@ -147,6 +150,7 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
                 break;
 
         }
+        Log.e(TAG,"==>onTouchEvent ");
         setEnabled(true);
         return true;
     }

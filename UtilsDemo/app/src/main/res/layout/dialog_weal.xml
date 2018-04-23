@@ -17,13 +17,13 @@
             android:layout_height="33dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/weal_dialog_top_after_icon"/>
+            android:background="@drawable/weal_dialog_top_after_icon_white"/>
         <ImageView
             android:id="@+id/dialog_close"
             android:layout_width="28dp"
             android:layout_height="56dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/dialog_weal_close"
+            android:src="@drawable/dialog_weal_close_white"
             android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 
@@ -33,15 +33,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/dialog_top"
         android:layout_marginTop="-10dp"
-        android:background="@drawable/shape_dialog_weal_bg">
+        android:background="@drawable/shape_dialog_weal_bg_white">
         <TextView
             android:id="@+id/festival"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="重阳节，送您优惠券"
             android:gravity="center_horizontal"
-            android:layout_marginTop="32dp"
-            android:textColor="@color/dialog_weal_receive_bg"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/dialog_weal_receive_bg_white"
             android:textSize="22sp"/>
         <TextView
             android:id="@+id/dialog_message1"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:text="全场通用，现金抵扣"
             android:textSize="12sp"
-            android:textColor="@color/dialog_weal_hint_content"
+            android:textColor="@color/dialog_weal_hint_content_white"
             android:layout_below="@id/festival"
             android:layout_marginTop="8dp"
             android:layout_centerHorizontal="true"
@@ -58,31 +58,20 @@
             android:id="@+id/dialog_coupon_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="12dp"
             android:layout_below="@id/dialog_message1"></ListView>
-        <TextView
-            android:id="@+id/dialog_weal_hint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="再接再厉，生活不只是有诗和远方，还要涨停"
-            android:textColor="@color/dialog_weal_hint_content"
-            android:layout_marginTop="24dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/dialog_coupon_listview"
-            android:textSize="12sp"
-            />
         <TextView
             android:id="@+id/dialog_receive_tv"
             android:layout_width="172dp"
             android:layout_height="33dp"
-            android:layout_below="@id/dialog_weal_hint"
+            android:layout_below="@id/dialog_coupon_listview"
             android:layout_marginTop="16dp"
             android:layout_centerHorizontal="true"
             android:text="立即领取"
             android:gravity="center"
             android:textSize="18dp"
-            android:textColor="@color/dialog_weal_receive_tv"
-            android:background="@drawable/shape_dialog_weal_receive_bg"/>
+            android:textColor="@color/dialog_weal_receive_tv_white"
+            android:background="@drawable/shape_dialog_weal_receive_bg_white"/>
         <TextView
             android:id="@+id/dialog_bottom_close"
             android:layout_width="wrap_content"
@@ -90,10 +79,10 @@
             android:text="谢谢，我不需要"
             android:layout_below="@id/dialog_receive_tv"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:textSize="14sp"
             android:layout_marginBottom="24dp"
-            android:textColor="@color/dialog_weal_receive_bg"/>
+            android:textColor="@color/dialog_weal_receive_bg_white"/>
     </RelativeLayout>
 
     <!--<RelativeLayout
@@ -109,5 +98,5 @@
         android:layout_height="85dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="-10dp"
-        android:background="@drawable/weal_dialog_top_befor_icon"/>
+        android:background="@drawable/weal_dialog_top_befor_icon_white"/>
 </RelativeLayout>

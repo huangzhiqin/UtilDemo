@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.first.alina.utilsdemo.MainActivity;
 import com.first.alina.utilsdemo.R;
 import com.first.alina.utilsdemo.widget.CutomFloatView;
 import com.first.alina.utilsdemo.widget.WealDialog;
@@ -31,8 +30,8 @@ public class CutomFloatActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cutom_float);
         cutomFloatView=findViewById(R.id.cutom_float);
-        cutomFloatView.setLeftImageRes(R.drawable.float_left);
-        cutomFloatView.setRightImageRes(R.drawable.float_right);
+        cutomFloatView.setLeftImageRes(R.drawable.float_left_white);
+        cutomFloatView.setRightImageRes(R.drawable.float_right_white);
         btn1=findViewById(R.id.btn1);
         btn2=findViewById(R.id.btn2);
         btn3=findViewById(R.id.btn3);
@@ -63,7 +62,7 @@ public class CutomFloatActivity extends Activity {
                 }
                  WealDialog dialog=new WealDialog.Builder(CutomFloatActivity.this)
                         .setTitle("重阳节到啦")
-                        .setMessage("重阳节，重阳节，重阳节，重阳节，重阳节，重阳节")
+                         .setMessage1("全场通用，现金抵扣")
                          .setDataList(list)
                         .setBottomOnClickListener(new DialogInterface.OnClickListener() {
                             @Override
