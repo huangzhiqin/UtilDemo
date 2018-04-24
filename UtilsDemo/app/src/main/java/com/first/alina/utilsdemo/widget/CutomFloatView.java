@@ -1,24 +1,16 @@
 package com.first.alina.utilsdemo.widget;
 
 import android.animation.Animator;
-import android.animation.AnimatorSet;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.view.ViewConfigurationCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
-import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.OvershootInterpolator;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.view.animation.DecelerateInterpolator;
 
-import com.first.alina.utilsdemo.R;
 import com.first.alina.utilsdemo.common.ScreenUtils;
 
 
@@ -42,6 +34,9 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
     private float rawX;
     private float rawY;
     private int statusBarHeight;//状态栏高度
+    private ValueAnimator animator;
+    private DecelerateInterpolator decelerateInterpolator;
+    private ObjectAnimator rotationAnimator;
 
     public CutomFloatView(Context context) {
         super(context);
@@ -90,6 +85,7 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
         super.onTouchEvent(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                cancleAnimator();
                 downX = event.getX();
                 downY = event.getY();
                 rawX = event.getRawX();
@@ -129,19 +125,14 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
                 } else {
                     setEnabled(false);//在拖动的过程中，禁止View点击事件
                 }
-                Log.e(TAG,"==>ACTION_UP disX="+(Math.abs(event.getRawX() - rawX))+" disY="+(Math.abs(event.getRawY() - rawY))+" minScroll="+minScroll);
-                if (event.getRawX() >= screenWidth / 2) {
-                    ObjectAnimator rightAnimator = ObjectAnimator.ofFloat(this, "rotation", -18, 9, -18, -9);
-                    rightAnimator.setDuration(1500);
-                    rightAnimator.start();
-                    this.layout(screenWidth - width, top, screenWidth, bottom);
-                    changeImageRes(rightImage);
 
+                if (event.getRawX() >= screenWidth / 2) {
+                    startRotationAnimator(-18, 9, -18, -9);
+                    startTranslationAnimator((int)getX(),screenWidth-width);
+                    changeImageRes(rightImage);
                 } else {
-                    ObjectAnimator rightAnimator = ObjectAnimator.ofFloat(this, "rotation", 18, -9, 18, 9);
-                    rightAnimator.setDuration(1500);
-                    rightAnimator.start();
-                    this.layout(0, getTop(), width,getBottom());
+                    startRotationAnimator(18, -9, 18, 9);
+                    startTranslationAnimator((int) getX(),0);
                     changeImageRes(leftImage);
                 }
                 break;
@@ -150,7 +141,6 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
                 break;
 
         }
-        Log.e(TAG,"==>onTouchEvent ");
         setEnabled(true);
         return true;
     }
@@ -177,6 +167,64 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
 
     private void changeImageRes(int res) {
         this.setImageResource(res);
+    }
+
+
+    /**
+     * 在X方向上弹性移动
+     * @param startX
+     * @param endX
+     */
+    private void startTranslationAnimator(int startX,int endX){
+        if (decelerateInterpolator==null){
+            decelerateInterpolator=new DecelerateInterpolator();
+        }
+        animator=ObjectAnimator.ofInt(startX,endX);
+        animator.setInterpolator(decelerateInterpolator);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int upX=(int)animation.getAnimatedValue();
+                layout(upX,top,upX+width,bottom);
+            }
+
+        });
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                animation.removeAllListeners();
+                animation.removeAllListeners();
+            }
+        });
+        animator.setDuration(500).start();
+
+    }
+
+    /**
+     * 旋转动画
+     * @param values1
+     * @param values2
+     * @param values3
+     * @param values4
+     */
+    private void startRotationAnimator(int values1,int values2,int values3,int values4){
+        if (decelerateInterpolator==null){
+            decelerateInterpolator=new DecelerateInterpolator();
+        }
+        rotationAnimator = ObjectAnimator.ofFloat(this, "rotation",values1, values2, values3, values4);
+        rotationAnimator.setDuration(1500);
+        rotationAnimator.setInterpolator(decelerateInterpolator);
+        rotationAnimator.start();
+    }
+
+    private void cancleAnimator(){
+        if (animator!=null&&animator.isRunning()){
+            animator.cancel();
+        }
+        if (rotationAnimator!=null&&rotationAnimator.isRunning()){
+            rotationAnimator.cancel();
+        }
+
     }
 
 }

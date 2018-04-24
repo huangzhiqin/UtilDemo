@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.first.alina.utilsdemo.MyApplication;
 import com.first.alina.utilsdemo.R;
 import com.first.alina.utilsdemo.widget.CutomFloatView;
 import com.first.alina.utilsdemo.widget.WealDialog;
@@ -81,5 +82,17 @@ public class CutomFloatActivity extends Activity {
             }
         });
 
+
+
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
