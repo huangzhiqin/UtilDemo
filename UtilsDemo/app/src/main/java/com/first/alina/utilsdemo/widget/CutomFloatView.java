@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.support.annotation.Px;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -37,6 +38,7 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
     private ValueAnimator animator;
     private DecelerateInterpolator decelerateInterpolator;
     private ObjectAnimator rotationAnimator;
+    private boolean actionDown=true;//只有首次绘制View和触摸时，才会调用layout方法，这方法可以避免，在滑动ListView或者更新页面时，CutomFloatView会复位的问题
 
     public CutomFloatView(Context context) {
         super(context);
@@ -81,10 +83,19 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
     }
 
     @Override
+    public void layout(@Px int l, @Px int t, @Px int r, @Px int b) {
+        if (actionDown){
+            super.layout(l, t, r, b);
+        }
+
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
         super.onTouchEvent(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                actionDown=true;
                 cancleAnimator();
                 downX = event.getX();
                 downY = event.getY();
@@ -194,6 +205,7 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
             public void onAnimationEnd(Animator animation) {
                 animation.removeAllListeners();
                 animation.removeAllListeners();
+                actionDown=false;
             }
         });
         animator.setDuration(500).start();
