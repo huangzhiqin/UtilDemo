@@ -93,9 +93,10 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         super.onTouchEvent(event);
+
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                actionDown=true;
+
                 cancleAnimator();
                 downX = event.getX();
                 downY = event.getY();
@@ -126,8 +127,9 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
                         bottom = getBottom();
                         top = getTop();
                     }
+                    actionDown=true;
                     this.layout(l, top, r, bottom);
-
+                    actionDown=false;
                 }
                 break;
             case MotionEvent.ACTION_UP:
@@ -135,17 +137,18 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
                     setEnabled(true);
                 } else {
                     setEnabled(false);//在拖动的过程中，禁止View点击事件
+                    if (event.getRawX() >= screenWidth / 2) {
+                        startRotationAnimator(-18, 9, -18, -9);
+                        startTranslationAnimator((int)getX(),screenWidth-width);
+                        changeImageRes(rightImage);
+                    } else {
+                        startRotationAnimator(18, -9, 18, 9);
+                        startTranslationAnimator((int) getX(),0);
+                        changeImageRes(leftImage);
+                    }
                 }
 
-                if (event.getRawX() >= screenWidth / 2) {
-                    startRotationAnimator(-18, 9, -18, -9);
-                    startTranslationAnimator((int)getX(),screenWidth-width);
-                    changeImageRes(rightImage);
-                } else {
-                    startRotationAnimator(18, -9, 18, 9);
-                    startTranslationAnimator((int) getX(),0);
-                    changeImageRes(leftImage);
-                }
+
                 break;
             case MotionEvent.ACTION_CANCEL:
                 Log.e(TAG, "==> action_cancel");
@@ -196,7 +199,9 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 int upX=(int)animation.getAnimatedValue();
+                actionDown=true;
                 layout(upX,top,upX+width,bottom);
+                actionDown=false;
             }
 
         });
@@ -205,7 +210,6 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
             public void onAnimationEnd(Animator animation) {
                 animation.removeAllListeners();
                 animation.removeAllListeners();
-                actionDown=false;
             }
         });
         animator.setDuration(500).start();
