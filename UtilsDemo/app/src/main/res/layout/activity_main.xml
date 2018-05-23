@@ -51,4 +51,25 @@
         android:text="悬浮窗2"
         android:layout_marginTop="10dp"/>
 
+    <TextView
+        android:id="@+id/soft_key"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="软键盘部分"
+        />
+    <TextView
+        android:id="@+id/move_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="移动的评论"/>
+
+    <TextView
+        android:id="@+id/side_slip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="我是可以拖拽和侧滑的RecyclerView"/>
+
 </LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="有数据没看到就收到比较少的换届大会搜就好GV开始的好机会软件和空间的妇女健康把那个，吗似乎更就撒苹果绞肉机黄河宫会不会对健康hi噢滑动臂和和化工我让奥诶很牛逼护山大华嘎哈人工湖不大V接电话就好撒比是看不到科技部将快递费是可凭借个人不能到付比较少的VB开始的宝贝计划VB科技社会危机好好干我好不够疯狂的篮板和化工人还不如平静拼搏敬爱的佛我我还跟我偶然和股份湖师大VB很少见啊恢复大师款那就好狗屎吧谁看见后撒好几百皮无人机购入金额看不到开发板那可怜的封神榜进口商该如何几个人就不离开你发了的本科生人教版热计量会尽快和人工肌肉诶比较卡奶酪蛋糕年就开始钢结构颇为人家看工人司空见惯后IE爱个屁加热片北京饭店可不能刚开始就，慢慢来空间隔离霜坚不可摧是你看看基本上都京津冀构配件看破热我公平而今年基金佛【 机已而过佛为欧派工棚见覅偶尔uafiuewiguoiergiwefudgvjbk金佛IE扶贫起拍价管理科的烦恼不噶地方Hi好大V已毫无二阿姨foe我可没教师节哦if吉萨獋UI覅额姑婆京东方广寒深宫i化股东吴【哦喷那就大V红色经典后如何给我我就饿哦高级人机琥珀金红瓶热偶蝴蝶结哦户人家你不吹牛逼金石可镂关雎尔家供热OK哦百年孤寂离开你看过你不看的进口品【i快捷键那你刻录机哦【 "/>
+
+    <include layout="@layout/view_message_list" />
+
+    <include layout="@layout/layout_send_message_bar" />
+
+
+    <cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout
+        android:id="@+id/panel_root"
+        style="@style/Panel"
+        android:visibility="gone">
+
+        <include layout="@layout/merge_panel_content" />
+    </cn.dreamtobe.kpswitch.widget.KPSwitchPanelLinearLayout>
+
+</cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout>

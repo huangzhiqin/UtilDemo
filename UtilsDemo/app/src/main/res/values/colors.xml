@@ -15,5 +15,9 @@
     <color name="dialog_weal_money_coupon_white">#434343</color>
     <color name="dialog_weal_coupon_time_white">#737373</color>
     <color name="dialog_weal_item_line_white">#CECECE</color>
+    <color name="default_bg">#ffffff</color>
+
+    <color name="chatting_list_bg">@color/default_bg</color>
+    <color name="translucent">#00000000</color>
 
 </resources>
