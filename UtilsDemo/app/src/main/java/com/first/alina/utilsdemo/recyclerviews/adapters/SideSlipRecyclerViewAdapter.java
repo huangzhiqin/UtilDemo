@@ -62,7 +62,14 @@ public class SideSlipRecyclerViewAdapter extends RecyclerView.Adapter<SideSlipRe
         return true;
     }
 
-    class SideSlipViewHolder extends RecyclerView.ViewHolder{
+    @Override
+    public boolean swipeItem(int position) {
+
+        return true;
+    }
+
+
+    public  class SideSlipViewHolder extends RecyclerView.ViewHolder{
         private TextView title;
         ImageView delete;
 

@@ -22,5 +22,12 @@ public interface SideSlipItemTouchMoveListener {
      */
     boolean onItemRemove(int position);
 
+    /**
+     * 侧滑
+     * @param position
+     * @return
+     */
+    boolean swipeItem(int position);
+
 
 }
