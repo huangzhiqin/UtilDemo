@@ -128,6 +128,7 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
                 } else {
                     setEnabled(false);//在拖动的过程中，禁止View点击事件
                 }
+                Log.e(TAG,"==> event.getX() "+getX()+"screenWidth="+screenWidth+" screenWidth-2*width="+(screenWidth-width)+" getRawX="+event.getRawX()+"getLeft="+getLeft()+" getTop="+getTop());
                 if (event.getRawX() >= screenWidth / 2) {
                     this.layout(screenWidth - width, top, screenWidth, bottom);
                     changeImageRes(rightImage);

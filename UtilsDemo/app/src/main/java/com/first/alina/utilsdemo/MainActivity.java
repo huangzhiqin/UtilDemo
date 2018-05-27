@@ -79,5 +79,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, CutomFloatActivity.class));
             }
         });
+
+        findViewById(R.id.ratingBar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,RatingBarActivity.class));
+            }
+        });
     }
 }

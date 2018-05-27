@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.first.alina.utilsdemo.MainActivity;
 import com.first.alina.utilsdemo.R;
 import com.first.alina.utilsdemo.widget.CutomFloatView;
+import com.first.alina.utilsdemo.widget.FloatView2;
 import com.first.alina.utilsdemo.widget.WealDialog;
 
 
@@ -23,6 +24,7 @@ public class CutomFloatActivity extends Activity {
     private final String TAG="CutomFloatActivity";
     private CutomFloatView cutomFloatView;
     private Button btn1,btn2,btn3;
+    private FloatView2 floatView2;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,8 @@ public class CutomFloatActivity extends Activity {
         btn1=findViewById(R.id.btn1);
         btn2=findViewById(R.id.btn2);
         btn3=findViewById(R.id.btn3);
+        floatView2=findViewById(R.id.float_view2);
+
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +77,15 @@ public class CutomFloatActivity extends Activity {
                 dialog.show();
             }
         });
+        floatView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(CutomFloatActivity.this,"我是第二种浮窗",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
 
     }
 }
