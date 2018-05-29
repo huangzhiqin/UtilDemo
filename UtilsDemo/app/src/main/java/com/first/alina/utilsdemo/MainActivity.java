@@ -7,12 +7,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.first.alina.utilsdemo.activitys.MoveCommentMainActivity;
+import com.first.alina.utilsdemo.activitys.TextViewSwitchActivity;
 import com.first.alina.utilsdemo.floats.CutomFloatActivity;
 import com.first.alina.utilsdemo.floats.FloatActivity;
+import com.first.alina.utilsdemo.recyclerviews.SideSlipRecyclerViewActivity;
+import com.first.alina.utilsdemo.test.activity.ChatMainActivity;
 import com.first.alina.utilsdemo.widget.WealDialog;
 
 public class MainActivity extends AppCompatActivity {
-    private final String TAG="MainActivity";
+    private final String TAG="ChatMainActivity";
 
 
     @Override
@@ -55,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final WealDialog dialog=new WealDialog.Builder(MainActivity.this)
                         .setTitle("重阳节到啦")
-                        .setMessage("重阳节，重阳节，重阳节，重阳节，重阳节，重阳节")
+                        .setMessage1("重阳节，重阳节，重阳节，重阳节，重阳节，重阳节")
                         .setBottomOnClickListener(new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -83,7 +87,32 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.ratingBar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,RatingBarActivity.class));
+                startActivity(new Intent(MainActivity.this, RatingBarActivity.class));
+            }
+        });
+        findViewById(R.id.soft_key).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ChatMainActivity.class));
+            }
+        });
+        findViewById(R.id.move_comment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MoveCommentMainActivity.class));
+            }
+        });
+
+        findViewById(R.id.side_slip).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SideSlipRecyclerViewActivity.class));
+            }
+        });
+        findViewById(R.id.switch_tv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, TextViewSwitchActivity.class));
             }
         });
     }

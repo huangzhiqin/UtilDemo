@@ -46,6 +46,34 @@
         <activity android:name=".floats.FloatActivity"/>
         <activity android:name=".floats.CutomFloatActivity"/>
         <activity android:name=".RatingBarActivity"/>
+
+        <activity
+            android:name=".test.activity.ChattingUnresolvedActivity"
+            android:label="@string/activity_chatting_unresolved_title"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity
+            android:name=".test.activity.ChattingResolvedHandleByPlaceholderActivity"
+            android:label="@string/activity_chatting_fullscreen_resolved_title"
+            android:windowSoftInputMode="adjustUnspecified"/>
+
+        <activity
+            android:name=".test.activity.ChattingResolvedActivity"
+            android:label="@string/activity_chatting_resolved_title"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity
+            android:name=".test.activity.ChattingResolvedFragmentActivity"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity
+            android:name=".test.activity.TranslucentActivity"
+            android:theme="@style/TranslucentFullScreenTheme"/>
+        <activity android:name=".test.activity.ChatMainActivity"/>
+        <activity android:name=".activitys.MoveCommentMainActivity"/>
+        <activity android:name=".recyclerviews.SideSlipRecyclerViewActivity"/>
+        <activity android:name=".activitys.TextViewSwitchActivity"/>
+
     </application>
 
 </manifest>

@@ -7,7 +7,17 @@
     <color name="cailianshe_gray_light">#C8C8C8</color> <!-- 浅灰 -->
 
     <!--钱包-->
-    <color name="dialog_weal_receive_bg">#FFFFFF</color>
-    <color name="dialog_weal_hint_content">#8B0000</color>
-    <color name="dialog_weal_receive_tv">#EC373A</color>
+    <color name="dialog_weal_receive_bg_white">#FFFFFF</color>
+    <color name="dialog_weal_hint_content_white">#8B0000</color>
+    <color name="dialog_weal_receive_tv_white">#EC373A</color>
+    <color name="dialog_weal_bg_white">#EB333B</color>
+    <color name="dialog_weal_money_white">#EF4536</color>
+    <color name="dialog_weal_money_coupon_white">#434343</color>
+    <color name="dialog_weal_coupon_time_white">#737373</color>
+    <color name="dialog_weal_item_line_white">#CECECE</color>
+    <color name="default_bg">#ffffff</color>
+
+    <color name="chatting_list_bg">@color/default_bg</color>
+    <color name="translucent">#00000000</color>
+
 </resources>

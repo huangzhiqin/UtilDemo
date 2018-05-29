@@ -11,9 +11,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.first.alina.utilsdemo.R;
+import com.first.alina.utilsdemo.adapters.DialogWealAdapter;
+
+import java.util.List;
 
 
 /**
@@ -38,13 +42,16 @@ public class WealDialog extends Dialog {
     public static class Builder{
         private Context context;
         private TextView bottomCloseTv;
+        private TextView messageTv1;
         private ImageView closeImg;
-        private TextView messageTv;
         private TextView titleTv;
+        private ListView listView;
         private String title;
-        private String message;
+        private String message1;
+        private List<String> list;
         private OnClickListener onClickListener;
         private OnClickListener rightOnClickListener;
+        private DialogWealAdapter dialogWealAdapter;
 
         public Builder (Context context){
             this.context=context;
@@ -55,8 +62,12 @@ public class WealDialog extends Dialog {
             return this;
         }
 
-        public Builder setMessage(String message){
-            this.message=message;
+        public Builder setMessage1(String message){
+            this.message1=message;
+            return this;
+        }
+        public Builder setDataList(List<String> list){
+            this.list=list;
             return this;
         }
 
@@ -76,13 +87,16 @@ public class WealDialog extends Dialog {
             View view= LayoutInflater.from(context).inflate(R.layout.dialog_weal,null);
             wealDialog.setContentView(view);
             bottomCloseTv=view.findViewById(R.id.dialog_bottom_close);
-            messageTv=view.findViewById(R.id.dialog_weal_hint);
             titleTv=view.findViewById(R.id.festival);
             closeImg=view.findViewById(R.id.dialog_close);
+            messageTv1=view.findViewById(R.id.dialog_message1);
             bottomCloseTv.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);//添加下划线
+            //bottomCloseTv.getPaint().setFlags(Paint.LINEAR_TEXT_FLAG);//去掉下划线
+            listView=view.findViewById(R.id.dialog_coupon_listview);
+            listView.setDividerHeight(0);
             wealDialog.setCanceledOnTouchOutside(true);
             titleTv.setText(title);
-            messageTv.setText(message);
+            messageTv1.setText(message1);
             bottomCloseTv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -96,6 +110,12 @@ public class WealDialog extends Dialog {
                     onClickListener.onClick(wealDialog, DialogInterface.BUTTON_NEGATIVE);
                 }
             });
+            if (list!=null){
+                dialogWealAdapter=new DialogWealAdapter(context);
+                dialogWealAdapter.setData(list);
+                listView.setAdapter(dialogWealAdapter);
+            }
+
             return wealDialog;
         }
     }
