@@ -148,6 +148,20 @@ public class CutomFloatView extends android.support.v7.widget.AppCompatImageView
                     }
                 }
 
+                Log.e(TAG,"==> event.getX() "+getX()+"screenWidth="+screenWidth+" screenWidth-2*width="+(screenWidth-width)+" getRawX="+event.getRawX()+"getLeft="+getLeft()+" getTop="+getTop());
+                if (event.getRawX() >= screenWidth / 2) {
+                    this.layout(screenWidth - width, top, screenWidth, bottom);
+                    changeImageRes(rightImage);
+                    ObjectAnimator rightAnimator = ObjectAnimator.ofFloat(this, "rotation", -18, 9, -18, -9);
+                    rightAnimator.setDuration(1500);
+                    rightAnimator.start();
+                } else {
+                    ObjectAnimator rightAnimator = ObjectAnimator.ofFloat(this, "rotation", 18, -9, 18, 9);
+                    rightAnimator.setDuration(1500);
+                    rightAnimator.start();
+                    this.layout(0, top, width,bottom);
+                    changeImageRes(leftImage);
+                }
 
                 break;
             case MotionEvent.ACTION_CANCEL:

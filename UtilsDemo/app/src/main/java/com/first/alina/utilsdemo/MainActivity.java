@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.first.alina.utilsdemo.activitys.MoveCommentMainActivity;
+import com.first.alina.utilsdemo.activitys.TextViewSwitchActivity;
 import com.first.alina.utilsdemo.floats.CutomFloatActivity;
 import com.first.alina.utilsdemo.floats.FloatActivity;
 import com.first.alina.utilsdemo.recyclerviews.SideSlipRecyclerViewActivity;
@@ -83,6 +84,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.ratingBar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, RatingBarActivity.class));
+            }
+        });
         findViewById(R.id.soft_key).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +107,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, SideSlipRecyclerViewActivity.class));
+            }
+        });
+        findViewById(R.id.switch_tv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, TextViewSwitchActivity.class));
             }
         });
     }

@@ -45,6 +45,8 @@
         <activity android:name=".ActivityListViewNormal"/>
         <activity android:name=".floats.FloatActivity"/>
         <activity android:name=".floats.CutomFloatActivity"/>
+        <activity android:name=".RatingBarActivity"/>
+
         <activity
             android:name=".test.activity.ChattingUnresolvedActivity"
             android:label="@string/activity_chatting_unresolved_title"
@@ -70,6 +72,8 @@
         <activity android:name=".test.activity.ChatMainActivity"/>
         <activity android:name=".activitys.MoveCommentMainActivity"/>
         <activity android:name=".recyclerviews.SideSlipRecyclerViewActivity"/>
+        <activity android:name=".activitys.TextViewSwitchActivity"/>
+
     </application>
 
 </manifest>
