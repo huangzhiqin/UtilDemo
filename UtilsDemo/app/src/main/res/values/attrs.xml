@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources >
+<resources>
+    <declare-styleable name="recycler_swipe_SwipeMenuLayout">
+        <attr name="leftViewId" format="reference"/>
+        <attr name="rightViewId" format="reference"/>
+        <attr name="contentViewId" format="reference"/>
+    </declare-styleable>
+
     <declare-styleable name="NoPaddingTextView">
         <attr name="textSize" format="dimension" />
     </declare-styleable>
