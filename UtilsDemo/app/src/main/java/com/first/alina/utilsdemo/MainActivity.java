@@ -115,5 +115,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, TextViewSwitchActivity.class));
             }
         });
+        findViewById(R.id.image).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,ImageLoaderActivity.class));
+            }
+        });
     }
 }
