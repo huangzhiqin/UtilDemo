@@ -1,11 +1,11 @@
-package com.first.alina.utilsdemo.floats;
+package com.first.alina.utilsdemo.floatview;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.first.alina.utilsdemo.R;
-import com.first.alina.utilsdemo.floats.widget.ATFloatingOrderView;
+import com.first.alina.utilsdemo.floatview.widget.ATFloatingOrderView;
 
 
 /**

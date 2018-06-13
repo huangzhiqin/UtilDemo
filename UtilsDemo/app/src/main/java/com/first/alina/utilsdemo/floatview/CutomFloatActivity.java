@@ -1,4 +1,4 @@
-package com.first.alina.utilsdemo.floats;
+package com.first.alina.utilsdemo.floatview;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.first.alina.utilsdemo.MyApplication;
 import com.first.alina.utilsdemo.R;
 import com.first.alina.utilsdemo.widget.CutomFloatView;
 import com.first.alina.utilsdemo.widget.FloatView2;

@@ -43,8 +43,8 @@
         </receiver>
         <service android:name=".DownLoadAdService"/>
         <activity android:name=".ActivityListViewNormal"/>
-        <activity android:name=".floats.FloatActivity"/>
-        <activity android:name=".floats.CutomFloatActivity"/>
+        <activity android:name=".floatview.FloatActivity"/>
+        <activity android:name=".floatview.CutomFloatActivity"/>
         <activity android:name=".RatingBarActivity"/>
 
         <activity

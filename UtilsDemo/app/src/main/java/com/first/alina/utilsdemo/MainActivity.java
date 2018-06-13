@@ -9,8 +9,8 @@ import android.view.View;
 
 import com.first.alina.utilsdemo.activitys.MoveCommentMainActivity;
 import com.first.alina.utilsdemo.activitys.TextViewSwitchActivity;
-import com.first.alina.utilsdemo.floats.CutomFloatActivity;
-import com.first.alina.utilsdemo.floats.FloatActivity;
+import com.first.alina.utilsdemo.floatview.CutomFloatActivity;
+import com.first.alina.utilsdemo.floatview.FloatActivity;
 import com.first.alina.utilsdemo.recyclerviews.SideSlipRecyclerViewActivity;
 import com.first.alina.utilsdemo.test.activity.ChatMainActivity;
 import com.first.alina.utilsdemo.widget.WealDialog;

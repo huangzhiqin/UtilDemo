@@ -1,4 +1,4 @@
-package com.first.alina.utilsdemo.floats.widget;
+package com.first.alina.utilsdemo.floatview.widget;
 
 import android.animation.AnimatorSet;
 import android.animation.TypeEvaluator;
