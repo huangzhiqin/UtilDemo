@@ -36,4 +36,5 @@ dependencies {
     compile 'tv.danmaku.ijk.media:ijkplayer-java:0.8.4'
     compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.4'
     compile 'cn.dreamtobe.kpswitch:library:1.6.1'
+    compile project(':library')
 }

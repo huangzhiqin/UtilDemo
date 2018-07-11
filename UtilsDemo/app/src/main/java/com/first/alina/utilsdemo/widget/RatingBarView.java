@@ -54,26 +54,32 @@ public class RatingBarView extends LinearLayout{
         isHalf=typedArray.getBoolean(R.styleable.RatingBarStyle_half,false);
         dividerDrawable=typedArray.getDrawable(R.styleable.RatingBarStyle_dividerDrawable);
         typedArray.recycle();
-        for (int i=0;i<ratingBarCount;i++){
-            if (getChildCount()==0){
-                ImageView ratingView=getRatingView(context);
-                addView(ratingView);
-            }else {
-                ImageView lastChildView= (ImageView) getChildAt(i-1);
-                LinearLayout.LayoutParams layoutParams= (LayoutParams) lastChildView.getLayoutParams();
-                layoutParams.rightMargin=20;
-                ImageView ratingView=getRatingView(context);
-                addView(ratingView,layoutParams);
-            }
 
-            Log.e(TAG,"==>RatingBarView ratingBarCount="+ratingBarCount+" i="+i);
-        }
     }
 
 
     private ImageView getRatingView(Context context){
         ImageView ratingView=new ImageView(context);
-        ratingView.setImageDrawable(emptyResouce);
         return ratingView;
+    }
+    public void setBarCount(int count,int selectorCount){
+        for (int i=0;i<count;i++){
+            if (getChildCount()==0){
+                ImageView ratingView=getRatingView(this.getContext());
+                if (i<selectorCount){
+                    ratingView.setImageDrawable(fullResouce);
+                }else {
+                    ratingView.setImageDrawable(emptyResouce);
+                }
+                addView(ratingView);
+            }else {
+                ImageView lastChildView= (ImageView) getChildAt(i-1);
+                LinearLayout.LayoutParams layoutParams= (LayoutParams) lastChildView.getLayoutParams();
+                layoutParams.rightMargin=20;
+                ImageView ratingView=getRatingView(this.getContext());
+                addView(ratingView,layoutParams);
+            }
+
+        }
     }
 }

@@ -18,6 +18,7 @@ public class RatingBarActivity extends Activity {
         setContentView(R.layout.activity_ratingbar);
 
         RatingBarView ratingBarView = findViewById(R.id.starView);
+        ratingBarView.setBarCount(4,2);
 
     }
 }

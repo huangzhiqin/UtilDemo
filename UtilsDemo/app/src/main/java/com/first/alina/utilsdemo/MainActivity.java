@@ -12,6 +12,7 @@ import com.first.alina.utilsdemo.activitys.TextViewSwitchActivity;
 import com.first.alina.utilsdemo.floatview.CutomFloatActivity;
 import com.first.alina.utilsdemo.floatview.FloatActivity;
 import com.first.alina.utilsdemo.recyclerviews.SideSlipRecyclerViewActivity;
+import com.first.alina.utilsdemo.scrollview.activitys.ScrollViewTopActivity;
 import com.first.alina.utilsdemo.test.activity.ChatMainActivity;
 import com.first.alina.utilsdemo.widget.WealDialog;
 
@@ -113,6 +114,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, TextViewSwitchActivity.class));
+            }
+        });
+        findViewById(R.id.scrollView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ScrollViewTopActivity.class));
             }
         });
     }
