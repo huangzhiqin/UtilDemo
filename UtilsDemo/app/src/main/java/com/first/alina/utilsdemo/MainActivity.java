@@ -116,11 +116,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, TextViewSwitchActivity.class));
             }
         });
+
         findViewById(R.id.scrollView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ScrollViewTopActivity.class));
             }
-        });
-    }
-}
+
+            });
+                findViewById(R.id.image).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(MainActivity.this, ImageLoaderActivity.class));
+
+                    }
+                });
+            }
+        }
+

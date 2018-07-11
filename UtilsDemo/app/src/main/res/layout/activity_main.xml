@@ -90,4 +90,11 @@
         android:layout_marginTop="10dp"
         android:text="滚动悬浮"/>
 
+    <TextView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加载图片"
+        android:layout_marginTop="10dp"/>
+
 </LinearLayout>
