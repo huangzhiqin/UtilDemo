@@ -74,6 +74,7 @@
         <activity android:name=".recyclerviews.SideSlipRecyclerViewActivity"/>
         <activity android:name=".activitys.TextViewSwitchActivity"/>
         <activity android:name=".scrollview.activitys.ScrollViewTopActivity"/>
+        <activity android:name=".scrollview.activitys.ScaleScrollActivity"/>
 
         <activity android:name=".ImageLoaderActivity"/>
 
