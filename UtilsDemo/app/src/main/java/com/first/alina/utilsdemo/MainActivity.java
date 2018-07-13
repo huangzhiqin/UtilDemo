@@ -15,6 +15,7 @@ import com.first.alina.utilsdemo.floatview.FloatActivity;
 import com.first.alina.utilsdemo.recyclerviews.SideSlipRecyclerViewActivity;
 import com.first.alina.utilsdemo.scrollview.activitys.ScaleScrollActivity;
 import com.first.alina.utilsdemo.scrollview.activitys.ScrollViewTopActivity;
+import com.first.alina.utilsdemo.scrollview.activitys.TextScrollviewaActivity;
 import com.first.alina.utilsdemo.test.activity.ChatMainActivity;
 import com.first.alina.utilsdemo.widget.WealDialog;
 
@@ -137,6 +138,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ScaleScrollActivity.class));
+            }
+        });
+        findViewById(R.id.scale_image_text).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, TextScrollviewaActivity.class));
             }
         });
             }
