@@ -27,8 +27,8 @@ public class ScaleScrollActivity extends Activity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scale);
-       // initView();
-        //initData();
+        initView();
+        initData();
     }
 
     private void initView() {

@@ -10,13 +10,16 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/top_image"/>
+            android:src="@drawable/top_image"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/scale_image"
-            android:visibility="gone"/>
+            android:nestedScrollingEnabled="false"
+            />
     </RelativeLayout>
 
 </com.first.alina.utilsdemo.scrollview.widget.ScaleScrollView>

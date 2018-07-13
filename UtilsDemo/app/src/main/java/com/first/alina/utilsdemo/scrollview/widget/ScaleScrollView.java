@@ -1,18 +1,23 @@
 package com.first.alina.utilsdemo.scrollview.widget;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.support.v4.widget.NestedScrollView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
+
+import com.first.alina.utilsdemo.common.ScreenUtils;
 
 /**
  * Created by alina on 2018/7/12.
  */
 
-public class ScaleScrollView extends ScrollView implements View.OnTouchListener{
+public class ScaleScrollView extends NestedScrollView implements View.OnTouchListener{
     private final String TAG="ScaleScrollView";
     private View dropZoomView;
     private int dropViewWidth;
@@ -59,10 +64,11 @@ public class ScaleScrollView extends ScrollView implements View.OnTouchListener{
         switch (event.getAction()){
             case MotionEvent.ACTION_UP:
                 isScaling=false;
+                replyImage();
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (!isScaling){
-                    if (getScaleY()==0){
+                    if (getScrollY()==0){
                         firstPosition=event.getY();
                     }else {
                         break;
@@ -86,5 +92,31 @@ public class ScaleScrollView extends ScrollView implements View.OnTouchListener{
         ViewGroup.LayoutParams lp=dropZoomView.getLayoutParams();
         lp.width= (int) (dropViewWidth+distance);
         lp.height= (int) ((dropViewWidth+distance) * 9 / 16);
+        dropZoomView.setLayoutParams(lp);
+    }
+
+    // 回弹动画 (使用了属性动画)
+    @SuppressLint("NewApi")
+    public void replyImage() {
+        final ViewGroup.LayoutParams lp =dropZoomView.getLayoutParams();
+        final float w = dropZoomView.getLayoutParams().width;// 图片当前宽度
+        final float h = dropZoomView.getLayoutParams().height;// 图片当前高度
+        final float newW = ScreenUtils.getScreenWidth(this.getContext());// 图片原宽度
+        final float newH =  ScreenUtils.getScreenWidth(this.getContext()) * 9 / 16;// 图片原高度
+
+        // 设置动画
+        ValueAnimator anim = ObjectAnimator.ofFloat(0.0F, 1.0F).setDuration(200);
+
+        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float cVal = (Float) animation.getAnimatedValue();
+                lp.width = (int) (w - (w - newW) * cVal);
+                lp.height = (int) (h - (h - newH) * cVal);
+                dropZoomView.setLayoutParams(lp);
+            }
+        });
+        anim.start();
+
     }
 }
