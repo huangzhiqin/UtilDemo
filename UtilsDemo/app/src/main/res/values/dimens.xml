@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="subject_of_all_talk_item_width">85dp</dimen>
+    <dimen name="subject_free_talk_menu_placeholder">40dp</dimen>
+</resources>

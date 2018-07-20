@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import com.first.alina.utilsdemo.common.recyclerviews.BindLayout;
 import com.first.alina.utilsdemo.common.recyclerviews.ViewHolder;
+import com.first.alina.utilsdemo.recyclerviews.SwipeMenuItemClickListener;
+import com.first.alina.utilsdemo.recyclerviews.widget.SwipeMenuCreator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,8 @@ public abstract class Adapter1<T> extends RecyclerView.Adapter<ViewHolder> {
     private List<T> dataList = new ArrayList<>();
     private Context mContext;
     private SparseArray<Class<? extends ViewHolder>> viewHolderArray;
+    private SwipeMenuItemClickListener swipeMenuItemClickListener;
+    private SwipeMenuCreator swipeMenuCreator;
 
     public Adapter1(Context context) {
         this.mContext = context;
@@ -79,5 +83,21 @@ public abstract class Adapter1<T> extends RecyclerView.Adapter<ViewHolder> {
     public int getItemCount() {
         return dataList.size()>0?dataList.size():0;
     }
+
+    public SwipeMenuItemClickListener getSwipeMenuItemClickListener() {
+        return swipeMenuItemClickListener;
+    }
+
+    public void setSwipeMenuCreator(SwipeMenuCreator swipeMenuCreator) {
+        this.swipeMenuCreator = swipeMenuCreator;
+    }
+    public void setSwipeMenuItemClickListener(SwipeMenuItemClickListener swipeMenuItemClickListener) {
+        this.swipeMenuItemClickListener = swipeMenuItemClickListener;
+    }
+
+    public SwipeMenuCreator getSwipeMenuCreator() {
+        return swipeMenuCreator;
+    }
+
 
 }

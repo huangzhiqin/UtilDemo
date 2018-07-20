@@ -6,11 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 
+import com.first.alina.utilsdemo.scrollview.adapters.Adapter1;
+
 /**
  * Created by alina on 2018/7/11.
  */
 
 public abstract class ViewHolder<T> extends RecyclerView.ViewHolder {
+     Adapter1<T> adapter1;
     private SparseArray<View> viewArray;
     protected Context mContext;
     private View itemView;
@@ -41,5 +44,11 @@ public abstract class ViewHolder<T> extends RecyclerView.ViewHolder {
         }
         return view;
     }
+
+public Adapter1<T> getAdapter(){
+    return adapter1;
+}
+
+
 
 }

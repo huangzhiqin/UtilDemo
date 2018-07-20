@@ -33,8 +33,6 @@ public class ScaleScrollActivity extends Activity{
 
     private void initView() {
         recyclerView = findViewById(R.id.recyclerView);
-
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 

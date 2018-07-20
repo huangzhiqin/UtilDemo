@@ -3,6 +3,7 @@ package com.first.alina.utilsdemo.scrollview.activitys;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -25,6 +26,7 @@ public class ScrollViewTopActivity extends Activity {
     private final String TAG="ScrollViewTopActivity";
     private RecyclerView recyclerView;
     private ImageView headViewBg;
+    private AppBarLayout appBarLayout;
     private List<Object> textBeenList = new ArrayList<>();
     private Adapter1<Object> adapter1;
     private LinearLayoutManager linearLayoutManager;
@@ -45,6 +47,7 @@ public class ScrollViewTopActivity extends Activity {
     private void initView() {
         recyclerView = findViewById(R.id.recyclerView);
         headViewBg=findViewById(R.id.head_bg);
+        appBarLayout=findViewById(R.id.appBar);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
     }
@@ -69,6 +72,16 @@ public class ScrollViewTopActivity extends Activity {
     }
 
     private void initListener() {
-
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState==RecyclerView.SCROLL_STATE_IDLE){
+                    if (0==linearLayoutManager.findFirstCompletelyVisibleItemPosition()){
+                        appBarLayout.setExpanded(true,true);
+                    }
+                }
+            }
+        });
     }
 }

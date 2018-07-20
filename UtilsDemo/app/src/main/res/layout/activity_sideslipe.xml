@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
+    <com.first.alina.utilsdemo.recyclerviews.widget.SwipeMenuRecyclerView
         android:id="@+id/side_slip_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

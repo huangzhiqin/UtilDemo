@@ -4,20 +4,31 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/scale_image"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/top_image"
-            android:focusable="true"
-            android:focusableInTouchMode="true"/>
+        android:layout_height="match_parent"
+        android:background="#aaccaa">
+       <RelativeLayout
+           android:id="@+id/head_layout"
+           android:layout_width="match_parent"
+           android:layout_height="200dp"
+           android:background="#ccaabb">
+           <ImageView
+               android:id="@+id/scale_image"
+               android:layout_width="match_parent"
+               android:layout_height="200dp"
+               android:scaleType="centerCrop"
+               android:src="@drawable/top_image"
+               android:focusable="true"
+               android:focusableInTouchMode="true"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="30dp"
+               android:text="我是可以缩放的view"/>
+       </RelativeLayout>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/scale_image"
+            android:layout_below="@id/head_layout"
             android:nestedScrollingEnabled="false"
             />
     </RelativeLayout>

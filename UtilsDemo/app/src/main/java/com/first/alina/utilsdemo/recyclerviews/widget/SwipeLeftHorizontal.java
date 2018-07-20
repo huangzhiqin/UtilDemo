@@ -1,33 +1,51 @@
+/*
+ * Copyright 2016 Yan Zhenjie
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.first.alina.utilsdemo.recyclerviews.widget;
 
 import android.view.View;
 import android.widget.OverScroller;
 
 /**
- * Created by alina on 2018/5/25.
+ * Created by Yan Zhenjie on 2016/7/22.
  */
+class SwipeLeftHorizontal extends SwipeHorizontal {
 
-public class SwipeLeftHorizontal extends SwipeHorizontal{
-    public SwipeLeftHorizontal( View menuView) {
-        super(SwipeRecyclerView.LEFT_DIRECTION, menuView);
+    public SwipeLeftHorizontal(View menuView) {
+        super(SwipeMenuRecyclerView.LEFT_DIRECTION, menuView);
     }
 
     @Override
     public boolean isMenuOpen(int scrollX) {
-        int i=-getMenuWidth()*getDirection();
-        return scrollX<=i&&i!=0;
+        int i = -getMenuView().getWidth() * getDirection();
+        return scrollX <= i && i != 0;
     }
 
     @Override
-    public void autoMenuOpen(OverScroller scroller, int scrollX, int duration) {
-        scroller.startScroll(Math.abs(scrollX),0,getMenuWidth()-Math.abs(scrollX),0,duration);
-
+    public boolean isMenuOpenNotEqual(int scrollX) {
+        return scrollX < -getMenuView().getWidth() * getDirection();
     }
 
     @Override
-    public void autoMenuClose(OverScroller scroller, int scrollX, int duration) {
-        scroller.startScroll(-Math.abs(scrollX),0,Math.abs(scrollX),0,duration);
+    public void autoOpenMenu(OverScroller scroller, int scrollX, int duration) {
+        scroller.startScroll(Math.abs(scrollX), 0, getMenuView().getWidth() - Math.abs(scrollX), 0, duration);
+    }
 
+    @Override
+    public void autoCloseMenu(OverScroller scroller, int scrollX, int duration) {
+        scroller.startScroll(-Math.abs(scrollX), 0, Math.abs(scrollX), 0, duration);
     }
 
     @Override

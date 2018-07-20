@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.first.alina.utilsdemo.recyclerviews.widget.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    swipe:contentViewId="@+id/swipe_content"
+    swipe:leftViewId="@+id/swipe_left"
+    swipe:rightViewId="@+id/swipe_right"
+    android:id="@+id/swipe_menu_layout">
+
+    <com.first.alina.utilsdemo.recyclerviews.widget.SwipeMenuView
+        android:id="@id/swipe_left"
+        android:layout_width="wrap_content"
+        android:layout_height="85dp"/>
+
+    <RelativeLayout
+        android:id="@id/swipe_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rl_free"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/free_card_view"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                app:cardCornerRadius="4dp"
+                app:cardBackgroundColor="@color/transparent"
+                app:cardElevation="0px">
+
+                <ImageView
+                    android:id="@+id/free_image"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/ic_empty"
+                    android:scaleType="centerCrop"/>
+
+            </android.support.v7.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/free_card_view"
+                android:layout_marginLeft="12dp">
+
+                <TextView
+                    android:id="@+id/free_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="风口研报"
+                    android:textSize="14sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/rl_time"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:maxLength="7"
+                    android:textColor="#00aacc"/>
+
+                <RelativeLayout
+                    android:id="@+id/rl_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    >
+
+                    <TextView
+                        android:id="@+id/free_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="更新时间  "
+                        android:layout_centerVertical="true"
+                        android:textColor="#00aacc"/>
+
+                    <ImageView
+                        android:id="@+id/free_push_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/free_time"
+                        android:layout_marginStart="5dp"
+                        android:background="@drawable/ic_empty"/>
+                </RelativeLayout>
+                <!--subject_talk_close_message-->
+                <TextView
+                    android:id="@+id/free_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#00aacc"
+                    android:layout_below="@id/free_title"
+                    android:layout_marginTop="2dp"
+                    android:text=""
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:lineSpacingMultiplier="1.2"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
+        
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="#aaccbb"
+            />
+        
+    </RelativeLayout>
+
+
+    <com.first.alina.utilsdemo.recyclerviews.widget.SwipeMenuView
+        android:id="@id/swipe_right"
+        android:layout_width="wrap_content"
+        android:layout_height="85dp"/>
+
+</com.first.alina.utilsdemo.recyclerviews.widget.SwipeMenuLayout>

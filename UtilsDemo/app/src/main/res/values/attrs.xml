@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="recycler_swipe_SwipeMenuLayout">
+ <!--   <declare-styleable name="recycler_swipe_SwipeMenuLayout">
         <attr name="leftViewId" format="reference"/>
         <attr name="rightViewId" format="reference"/>
         <attr name="contentViewId" format="reference"/>
-    </declare-styleable>
+    </declare-styleable>-->
 
     <declare-styleable name="NoPaddingTextView">
         <attr name="textSize" format="dimension" />
@@ -123,5 +123,11 @@
         <attr name="android:divider" />
         <attr name="android:requiresFadingEdge" />
         <attr name="android:fadingEdgeLength" />
+    </declare-styleable>
+
+    <declare-styleable name="recycler_swipe_SwipeMenuLayout">
+        <attr name="leftViewId" format="reference" />
+        <attr name="rightViewId" format="reference" />
+        <attr name="contentViewId" format="reference" />
     </declare-styleable>
 </resources>
