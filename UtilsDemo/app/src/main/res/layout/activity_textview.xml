@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
@@ -8,4 +8,12 @@
         android:layout_height="wrap_content"
         />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:maxLines="1"
+        android:text="扫地阿姨发现你写的代码，有BuG,,,！Hello，Word ！ HelloworldHelloHello Helloworld扫地阿姨发现你写的代码有BUG！Hello Hello Word!Hello Word"/>
+
+</LinearLayout>

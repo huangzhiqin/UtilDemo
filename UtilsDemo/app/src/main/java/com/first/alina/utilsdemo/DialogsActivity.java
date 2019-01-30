@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ import com.first.alina.utilsdemo.widget.CenterDialog3;
  */
 
 public class DialogsActivity extends Activity {
+    private String TAG="SingleActivity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,5 +65,16 @@ public class DialogsActivity extends Activity {
 
             }
         });
+        Log.e(TAG,"getTaskId()="+getTaskId()+"  this="+this+"  hashCode="+this.hashCode()+"  "+getClass().getSimpleName());
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

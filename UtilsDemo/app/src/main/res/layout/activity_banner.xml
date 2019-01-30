@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="153dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clipChildren="false">
+<!--<com.first.alina.utilsdemo.banner.BannerView
+    android:id="@+id/banner_view"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:clipChildren="false"
+    />-->
+    <com.first.alina.utilsdemo.banner.FocusViewPager
+        android:id="@+id/banner_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        app:isLoop="true"
+        app:loopTime="4000" />
+
+    <com.first.alina.utilsdemo.banner.TransIndicator
+        android:id="@+id/banner_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="10dp"
+
+        app:trans_height="2dp"
+        app:trans_indicator_types="round"
+        app:trans_leftmargin="7dp"
+
+        app:trans_round_radius="2dp"
+        app:trans_width="8dp" />
+</RelativeLayout>

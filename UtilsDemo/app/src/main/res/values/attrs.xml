@@ -130,4 +130,29 @@
         <attr name="rightViewId" format="reference" />
         <attr name="contentViewId" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="banner_Indicator">
+        <attr name="isLoop" format="boolean"/>
+        <attr name="loopTime" format="integer"/>
+    </declare-styleable>
+
+    <!--Banner 移动indicator indicator-->
+    <declare-styleable name="TransIndicator">
+        <attr name="trans_width" format="dimension"/> <!--指示器的大小-->
+        <attr name="trans_height" format="dimension"/> <!--指示器的大小-->
+        <attr name="trans_defaultcolor" format="color|reference"/> <!--指示器默认的颜色-->
+        <attr name="trans_leftmargin" format="dimension"/>
+        <attr name="trans_movecolor" format="color|reference"/> <!--指示器移动的颜色-->
+        <attr name="trans_dismiss_open" format="boolean"/>
+        <attr name="trans_round_radius" format="dimension"/>
+        <attr name="trans_indicator_types">
+            <enum name="circle" value="0"/>
+            <enum name="round" value="1"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="circleImageview">
+        <attr name="circle_background" format="reference"/><!--默认背景-->
+        <attr name="cirlce_width" format="dimension"/>
+        <attr name="circle_height" format="dimension"/>
+    </declare-styleable>
 </resources>
