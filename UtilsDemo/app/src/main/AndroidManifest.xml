@@ -28,7 +28,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         >
-        <activity android:name=".MainActivity"
+        <activity android:name=".TestActivity"
             android:theme="@style/Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -94,6 +94,7 @@
         <activity android:name=".task.SingleTaskActivity"
             android:launchMode="singleInstance"/>
         <activity android:name=".fragmentAndActivity.FragmentActivity"/>
+        <activity android:name=".test1.RecyclerViewWebActivity"/>
 
         <receiver android:name=".broadcast.TextBroadcast">
            <intent-filter>

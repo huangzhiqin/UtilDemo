@@ -47,6 +47,8 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
     compile 'com.squareup.okhttp3:okhttp:3.11.0'
+    //表格
+    compile 'com.github.huangyanbin:SmartTable:2.2.0'
 
 
 

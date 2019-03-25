@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
+import android.view.View;/**/
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -17,6 +17,7 @@ import com.first.alina.utilsdemo.R;
 import com.first.alina.utilsdemo.banner.bean.BannerBean;
 import com.first.alina.utilsdemo.banner.viewholder.BannerVHolder;
 import com.first.alina.utilsdemo.common.ScreenUtils;
+import com.first.alina.utilsdemo.utils.SingleInstance;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,5 +102,6 @@ public class BannerActivity extends Activity {
 
             }
         });
+        Glide.with(this).load("").into(new ImageView(this));
     }
 }

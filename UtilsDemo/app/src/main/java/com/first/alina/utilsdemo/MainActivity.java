@@ -34,6 +34,7 @@ import com.first.alina.utilsdemo.surfaceviews.SurfaceViewActivity;
 import com.first.alina.utilsdemo.task.SingleTaskActivity;
 import com.first.alina.utilsdemo.task.SingleTopActivity;
 import com.first.alina.utilsdemo.test.activity.ChatMainActivity;
+import com.first.alina.utilsdemo.test1.RecyclerViewWebActivity;
 import com.first.alina.utilsdemo.testdemo.ActivityVideoDemo;
 import com.first.alina.utilsdemo.view.CanvasActivity;
 import com.first.alina.utilsdemo.view.CusUnderLineSpan;
@@ -217,7 +218,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.webview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, WebViewActivity.class));
+                //startActivity(new Intent(MainActivity.this, WebViewActivity.class));
+                startActivity(new Intent(MainActivity.this, RecyclerViewWebActivity.class));
             }
         });
         findViewById(R.id.view1).setOnClickListener(new View.OnClickListener() {
