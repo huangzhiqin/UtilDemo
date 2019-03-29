@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.helper.mvp.test.MVPActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.util.Log;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private TextView textView2;
     private TextView textView3;
+    private TextView mvpTv;
     private List<String> list = new ArrayList<>();
     private String text = "你你看见深V好几年都发不记得你方便你的#PLATE_MARK#奥飞娱乐#PLATE_MARK#放到,你你的加不加还是放到,你你的加不加还是放到，你你的加不加还是放到，你你的加不加#PLATE_MARK#科大讯飞#PLATE_MARK#还是放到，" +
             "你你的加#PLATE_MARK#国药#PLATE_MARK#不加还是放到，你你的加不加还是放到，#PLATE_MARK#腾讯#PLATE_MARK#你你的加不加还是放到";
@@ -68,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView = (TextView) findViewById(R.id.tv1);
         textView2=(TextView)findViewById(R.id.tv_count);
+        mvpTv= (TextView) findViewById(R.id.mvp_tv);
+        mvpTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MVPActivity.class));
+            }
+        });
         Log.e(TAG,"==> flag="+getIntent().getFlags());
 
         SpannableString spannableString=new SpannableString(textParent);
