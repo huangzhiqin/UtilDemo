@@ -16,6 +16,7 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
+import io.reactivex.Observer;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -80,7 +81,13 @@ public class NewPresenter implements BasePresenter {
         //merge();
         //reduce();
         //scan();
-        cache();
+        //cache();
+        //mergeObservable();
+        //mergeTest();
+        //rxJavaConcat();
+        //rxJavaMerge();
+        //mergeInterval();
+        zip();
     }
 
     @Override
@@ -97,13 +104,50 @@ public class NewPresenter implements BasePresenter {
                         Log.e(TAG, "=========>" + integer);
                     }
                 });
-        List<MVP1Bean> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            MVP1Bean mvp = new MVP1Bean();
-            mvp.name = "我是第 " + i + " 条数据";
-            list.add(mvp);
-        }
-        Observable.concatArray(Observable.just(list), Observable.just(list), Observable.just(list), Observable.just(list), Observable.just(list))
+
+
+    }
+
+    private void rxJavaMerge() {
+        Observable.merge(Observable.just(1, 2, 3), Observable.just(4, 5, 6, 7))
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        Log.e(TAG, "=========>" + integer);
+                    }
+                });
+    }
+
+    private void rxJavaConcatArray() {
+        Observable<List<MVP1Bean>> observable = Observable.create(new ObservableOnSubscribe<List<MVP1Bean>>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<List<MVP1Bean>> emitter) throws Exception {
+                List<MVP1Bean> list = new ArrayList<>();
+                for (int i = 0; i < 10; i++) {
+                    MVP1Bean mvp = new MVP1Bean();
+                    mvp.name = "我是第 " + i + " 条数据";
+                    list.add(mvp);
+
+                }
+                emitter.onNext(list);
+                emitter.onComplete();
+            }
+        });
+
+        Observable<List<MVP1Bean>> observable2 = Observable.create(new ObservableOnSubscribe<List<MVP1Bean>>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<List<MVP1Bean>> emitter) throws Exception {
+                List<MVP1Bean> list = new ArrayList<>();
+                for (int i = 30; i < 40; i++) {
+                    MVP1Bean mvp = new MVP1Bean();
+                    mvp.name = "我是第 " + i + " 条数据";
+                    list.add(mvp);
+                }
+                emitter.onNext(list);
+                emitter.onComplete();
+            }
+        });
+        Observable.concat(observable, observable2)
                 .subscribe(new Consumer<List<MVP1Bean>>() {
                     @Override
                     public void accept(List<MVP1Bean> stringObjectMap) throws Exception {
@@ -116,53 +160,20 @@ public class NewPresenter implements BasePresenter {
     }
 
     private void zip() {
-        Observable.zip(getStringObservable(), getIntegerObservable(), new BiFunction<String, Integer, String>() {
+        Observable.zip(Observable.just(2,4), Observable.just(3,9,15,18), new BiFunction<Integer, Integer, Integer>() {
             @Override
-            public String apply(@NonNull String s, @NonNull Integer integer) throws Exception {
+            public Integer apply(@NonNull Integer s, @NonNull Integer integer) throws Exception {
+                Log.e(TAG, "zip : accept : " + s +"  integer="+integer+" "+ Thread.currentThread().getName());
                 return s + integer;
             }
-        }).subscribe(new Consumer<String>() {
+        }).observeOn(AndroidSchedulers.mainThread()).observeOn(Schedulers.io()).subscribeOn(Schedulers.io())
+                .subscribe(new Consumer<Integer>() {
             @Override
-            public void accept(@NonNull String s) throws Exception {
-                Log.e(TAG, "zip : accept : " + s + "\n");
+            public void accept(@NonNull Integer s) throws Exception {
+                Log.e(TAG, "zip : accept : " + s +" "+ Thread.currentThread().getName());
             }
         });
-    }
 
-    private Observable<String> getStringObservable() {
-        return Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
-            public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
-                if (!e.isDisposed()) {
-                    e.onNext("A");
-                    Log.e(TAG, "String emit : A \n");
-                    e.onNext("B");
-                    Log.e(TAG, "String emit : B \n");
-                    e.onNext("C");
-                    Log.e(TAG, "String emit : C \n");
-                }
-            }
-        });
-    }
-
-    private Observable<Integer> getIntegerObservable() {
-        return Observable.create(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
-                if (!e.isDisposed()) {
-                    e.onNext(1);
-                    Log.e(TAG, "Integer emit : 1 \n");
-                    e.onNext(2);
-                    Log.e(TAG, "Integer emit : 2 \n");
-                    e.onNext(3);
-                    Log.e(TAG, "Integer emit : 3 \n");
-                    e.onNext(4);
-                    Log.e(TAG, "Integer emit : 4 \n");
-                    e.onNext(5);
-                    Log.e(TAG, "Integer emit : 5 \n");
-                }
-            }
-        });
     }
 
     /**
@@ -285,6 +296,7 @@ public class NewPresenter implements BasePresenter {
      */
     private void interval() {
         disposable = Observable.interval(3, 2, TimeUnit.SECONDS)
+                //.takeUntil(20)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Long>() {
@@ -432,18 +444,6 @@ public class NewPresenter implements BasePresenter {
                 });
     }
 
-    /**
-     * 合并 感觉和concat一样
-     */
-    private void merge() {
-        Observable.merge(Observable.just(1, 2), Observable.just(2, 3, 4))
-                .subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(Integer integer) throws Exception {
-                        Log.e(TAG, "=======> accept= " + integer);
-                    }
-                });
-    }
 
     /**
      * 每次使用一个方法处理一个值,相当于求和、值拼接
@@ -485,20 +485,20 @@ public class NewPresenter implements BasePresenter {
 
     String cacheResult = "我是缓存数据";
     String netWorkResult = "我是网络数据";
+    String result = "最终数据结果:";
 
     /**
      * 缓存
      */
     private void cache() {
-        Observable<String> cacheObservable = Observable.create(new ObservableOnSubscribe<String>() {
+        final Observable<String> cacheObservable = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(@NonNull ObservableEmitter<String> emitter) throws Exception {
                 Log.e(TAG, "====> 缓存数据 subscribe");
                 if (cacheResult != null) {
                     emitter.onNext(cacheResult);
-                } else {
-                    emitter.onComplete();
                 }
+                emitter.onComplete();
             }
         });
         Observable<String> netWork = Observable.create(new ObservableOnSubscribe<String>() {
@@ -507,9 +507,8 @@ public class NewPresenter implements BasePresenter {
                 Log.e(TAG, "====> 网络数据 subscribe");
                 if (netWorkResult != null) {
                     emitter.onNext(netWorkResult);
-                } else {
-                    emitter.onComplete();
                 }
+                emitter.onComplete();
             }
         });
         Observable.concat(cacheObservable, netWork)
@@ -520,12 +519,89 @@ public class NewPresenter implements BasePresenter {
                         Log.e(TAG, "====> accept=" + o);
                     }
                 });
-        RxTextView.textChanges(textView).skip(2);
+    }
 
+    /**
+     * 合并 感觉和concat类似，组合多个被观察者，合并后按照时间线并行执行
+     */
+    private void merge() {
+        Observable.merge(Observable.just(1, 2), Observable.just(2, 3, 4))
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        Log.e(TAG, "=======> accept= " + integer);
+                    }
+                });
     }
-    private void setTestView(TextView textView){
-        this.textView=textView;
+
+    private void mergeInterval() {
+       /* Observable.concat(Observable.intervalRange(0, 6, 1, 1, TimeUnit.SECONDS), Observable.intervalRange(8, 5, 2, 3, TimeUnit.SECONDS))
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        Log.e(TAG, "====> concat accept=" + o);
+                    }
+                });*/
+        Observable.merge(Observable.intervalRange(0, 6, 1, 1, TimeUnit.SECONDS), Observable.intervalRange(8, 5, 2, 1, TimeUnit.SECONDS))
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        Log.e(TAG, "====>merge accept=" + o);
+                    }
+                });
     }
+
+
+    private void mergeObservable() {
+        Observable<String> cacheObservable2 = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<String> emitter) throws Exception {
+                Log.e(TAG, "====> 缓存数据 subscribe");
+                if (cacheResult != null) {
+                    emitter.onNext(cacheResult);
+                }
+                emitter.onComplete();
+            }
+        });
+        Observable<String> netWorkObservable2 = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<String> emitter) throws Exception {
+                Log.e(TAG, "====> 网络数据 subscribe");
+                if (netWorkResult != null) {
+                    emitter.onNext(netWorkResult);
+                }
+                emitter.onComplete();
+            }
+        });
+
+        Observable.merge(cacheObservable2, netWorkObservable2)
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull String s) {
+                        result += s + "+";
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.e(TAG, "============>" + result);
+                    }
+                });
+    }
+
+    private void setTestView(TextView textView) {
+        this.textView = textView;
+    }
+
     private TextView textView;
 
 
