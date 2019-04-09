@@ -1,5 +1,6 @@
 package android.support.v7.widget.helper.mvp;
 
+import android.os.Message;
 import android.support.v7.widget.helper.mvp.base.BasePresenter;
 import android.support.v7.widget.helper.mvp.bean.MVP1Bean;
 import android.support.v7.widget.helper.mvp.views.NewView;
@@ -603,6 +604,11 @@ public class NewPresenter implements BasePresenter {
     }
 
     private TextView textView;
+
+    private void handleTest(){
+        Message message=Message.obtain();
+        Message message11=new Message();
+    }
 
 
 }

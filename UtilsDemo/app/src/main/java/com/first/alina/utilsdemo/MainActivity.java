@@ -12,9 +12,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.helper.mvp.test.MVPActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,7 +76,11 @@ public class MainActivity extends AppCompatActivity {
         mvpTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MVPActivity.class));
+                //startActivity(new Intent(MainActivity.this, MVPActivity.class));
+                WindowManager manager= (WindowManager) MainActivity.this.getSystemService(Context.WINDOW_SERVICE);
+                DisplayMetrics displayMetrics=new DisplayMetrics();
+                manager.getDefaultDisplay().getMetrics(displayMetrics);
+                Log.e(TAG,"==> width="+displayMetrics.widthPixels+"  height="+displayMetrics.heightPixels);
             }
         });
         Log.e(TAG,"==> flag="+getIntent().getFlags());
