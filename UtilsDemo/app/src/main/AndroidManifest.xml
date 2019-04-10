@@ -49,7 +49,6 @@
         </receiver>
         <service android:name=".DownLoadAdService" />
 
-        <activity android:name=".ActivityListViewNormal" />
         <activity android:name=".floatview.FloatActivity" />
         <activity android:name=".floatview.CutomFloatActivity" />
         <activity android:name=".RatingBarActivity" />
