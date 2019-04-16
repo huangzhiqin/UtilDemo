@@ -31,6 +31,7 @@ import com.first.alina.utilsdemo.main.bean.ScaleImageBean;
 import com.first.alina.utilsdemo.main.bean.ScrollUpDownBean;
 import com.first.alina.utilsdemo.main.bean.SideSlipBean;
 import com.first.alina.utilsdemo.main.bean.SoftKeyBean;
+import com.first.alina.utilsdemo.main.bean.ThreadBean;
 import com.first.alina.utilsdemo.main.bean.View1Bean;
 import com.first.alina.utilsdemo.main.viewholders.BannerViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.BottomDialogViewHolder;
@@ -53,6 +54,7 @@ import com.first.alina.utilsdemo.main.viewholders.ScaleImageViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.ScrollUpDownViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.SideSlipViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.SoftKeyViewHolder;
+import com.first.alina.utilsdemo.main.viewholders.ThreadViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.View1ViewHolder;
 import com.first.alina.utilsdemo.scrollview.adapters.Adapter1;
 
@@ -116,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
                     return BottomDialogViewHolder.class;
                 }else if (object instanceof NoPaddingBean){
                   return NoPaddingTextViewViewHolder.class;
+              }else if (object instanceof ThreadBean){
+                  return ThreadViewHolder.class;
               }
                 return null;
             }
@@ -140,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new SideSlipBean());
         list.add(new CustomFloatBean());
         list.add(new NoPaddingBean());
+        list.add(new ThreadBean());
         list.add(new BottomDialogBean());
 
         adapter1.addData(list);

@@ -75,7 +75,6 @@
         <activity android:name=".scrollview.activitys.ScrollViewTopActivity" />
         <activity android:name=".scrollview.activitys.ScaleScrollActivity" />
         <activity android:name=".ImageLoaderActivity" />
-        <activity android:name=".testdemo.ActivityVideoDemo" />
         <activity android:name=".dialogs.BottomDialogActivity" />
         <activity android:name=".kline.BrokenLine1Activity" />
         <activity android:name=".view.WebViewActivity" />
@@ -93,12 +92,7 @@
         <activity android:name=".test1.RecyclerViewWebActivity" />
         <activity android:name="android.support.v7.widget.helper.mvp.test.MVPActivity" />
         <activity android:name="android.support.v7.widget.helper.mvp.test.TestActivity"/>
-
-        <receiver android:name=".broadcast.TextBroadcast">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
+        <activity android:name=".thread_demo.ThreadDemoActivity"/>
 
     </application>
 

@@ -70,7 +70,6 @@ public class NoPaddingTextView extends AppCompatTextView{
         int bottom=rect.bottom;
         rect.offset(-rect.left,-rect.top);
         paint.setAntiAlias(true);
-        paint.setColor(getCurrentTextColor());
         canvas.drawText(text,-(float)left,(float) (rect.bottom-bottom),paint);
     }
 }
