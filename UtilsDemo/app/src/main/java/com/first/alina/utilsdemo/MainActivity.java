@@ -24,6 +24,7 @@ import com.first.alina.utilsdemo.main.bean.ImageBean;
 import com.first.alina.utilsdemo.main.bean.MVPBean;
 import com.first.alina.utilsdemo.main.bean.MoveCommentBean;
 import com.first.alina.utilsdemo.main.bean.MultipleBean;
+import com.first.alina.utilsdemo.main.bean.NoPaddingBean;
 import com.first.alina.utilsdemo.main.bean.PicAndTextBean;
 import com.first.alina.utilsdemo.main.bean.RatingBarBean;
 import com.first.alina.utilsdemo.main.bean.ScaleImageBean;
@@ -45,6 +46,7 @@ import com.first.alina.utilsdemo.main.viewholders.ImageViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.MVPViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.MoveCommentViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.MultipleViewHolder;
+import com.first.alina.utilsdemo.main.viewholders.NoPaddingTextViewViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.PicAndTextViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.RatingBarViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.ScaleImageViewHolder;
@@ -112,7 +114,9 @@ public class MainActivity extends AppCompatActivity {
                     return CustomFloatViewHolder.class;
                 } else if (object instanceof BottomDialogBean) {
                     return BottomDialogViewHolder.class;
-                }
+                }else if (object instanceof NoPaddingBean){
+                  return NoPaddingTextViewViewHolder.class;
+              }
                 return null;
             }
         };
@@ -135,7 +139,9 @@ public class MainActivity extends AppCompatActivity {
         list.add(new SoftKeyBean());
         list.add(new SideSlipBean());
         list.add(new CustomFloatBean());
+        list.add(new NoPaddingBean());
         list.add(new BottomDialogBean());
+
         adapter1.addData(list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter1);

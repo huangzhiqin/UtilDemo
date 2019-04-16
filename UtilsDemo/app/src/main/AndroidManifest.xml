@@ -40,13 +40,6 @@
         <activity android:name=".TextViewActivity" />
         <activity android:name=".VideoActivity" />
 
-        <receiver android:name=".NetWorkBroadcastReceiver">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-                <action android:name="android.net.wifi.STATE_CHANGE" />
-            </intent-filter>
-        </receiver>
         <service android:name=".DownLoadAdService" />
 
         <activity android:name=".floatview.FloatActivity" />

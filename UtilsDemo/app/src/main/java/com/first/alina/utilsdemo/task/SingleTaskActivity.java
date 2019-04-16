@@ -42,6 +42,7 @@ public class SingleTaskActivity extends Activity{
             }
         });
         Log.e(TAG,"getTaskId()="+getTaskId()+"  this="+this+"  hashCode="+this.hashCode()+"  "+getClass().getSimpleName());
+
     }
 
     @Override
