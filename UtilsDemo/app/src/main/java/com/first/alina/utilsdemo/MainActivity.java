@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.e(TAG, "==> onResume");
-        Toast.makeText(this, Thread.currentThread().getName(), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, Thread.currentThread().getName(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
