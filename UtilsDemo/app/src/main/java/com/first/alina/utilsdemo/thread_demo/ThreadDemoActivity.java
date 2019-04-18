@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 
 import com.first.alina.utilsdemo.R;
-import com.first.alina.utilsdemo.thread_demo.executorservice.SingleThreadExecutor;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
