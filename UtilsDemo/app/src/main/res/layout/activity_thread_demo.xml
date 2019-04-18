@@ -7,4 +7,18 @@
         android:layout_height="wrap_content"
         android:text="我是ThreadDemo"/>
 
+    <TextView
+        android:id="@+id/start_aysnctask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="开启AsyncTask"/>
+
+    <TextView
+        android:id="@+id/close_aysnctask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="取消AsyncTask"/>
+
 </LinearLayout>

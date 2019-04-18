@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.first.alina.utilsdemo.R;
@@ -37,8 +38,22 @@ public class ThreadDemoActivity extends Activity{
         //new MyAsyncTask("AsyncTask2").executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,"02");
 
         myAsyncTask = new MyAsyncTask("AsyncTask1");
-        myAsyncTask.execute("01");
+        //myAsyncTask.execute("01");
        // new MyAsyncTask("AsyncTask2").execute("02");
+
+        findViewById(R.id.start_aysnctask).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myAsyncTask.execute("01");
+            }
+        });
+
+        findViewById(R.id.close_aysnctask).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myAsyncTask.cancel(true);
+            }
+        });
 
 
     }
@@ -82,43 +97,31 @@ public class ThreadDemoActivity extends Activity{
 
         @Override
         protected String doInBackground(String... params) {
-            for (int i=0;i<10000;i++){
-                Log.e(TAG,"============> doInBackground "+params[0]+"   name="+name+"  当前时间"+System.currentTimeMillis()+" i="+i);
+            for (int i=0;i<100000;i++){
                 if (isCancelled()){
-                    Toast.makeText(ThreadDemoActivity.this,"取消",Toast.LENGTH_SHORT).show();
                     Log.e(TAG,"============> doInBackground 取消");
                     break;
                 }
-               //publishProgress(i);
             }
             return params[0];
         }
-
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
             Log.e(TAG,"============> onProgressUpdate "+values[0]);
 
         }
-
         @Override
         protected void onCancelled(String s) {
             super.onCancelled(s);
             Log.e(TAG,"============> 取消 "+s);
         }
-
         @Override
         protected void onCancelled() {
             super.onCancelled();
             Log.e(TAG,"============> 取消 ");
-            Toast.makeText(ThreadDemoActivity.this,"取消",Toast.LENGTH_SHORT).show();
-        }
-
-      public void cancelTest(boolean status){
-            this.isCanceled=status;
         }
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
