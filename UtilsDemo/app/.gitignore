@@ -1,5 +1,15 @@
+*.iml
+.gradle
+/local.properties
+.idea
+/.idea/workspace.xml
+/.idea/libraries
+UtilsDemo/.idea/misc.xml
+.DS_Store
 /build
-/misc.xml
+/captures
+.externalNativeBuild
+/build
 /encodings.xml
 /*.ser
-.idea
+
