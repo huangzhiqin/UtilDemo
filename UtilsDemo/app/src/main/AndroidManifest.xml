@@ -37,7 +37,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".DialogsActivity" />
-        <activity android:name=".TextViewActivity" />
+        <activity android:name=".TextViewActivity" >
+            <intent-filter>
+                <action android:name="cutilsdemo.TextViewActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".VideoActivity" />
 
         <service android:name=".DownLoadAdService" />
@@ -84,7 +89,6 @@
         <activity
             android:name=".task.SingleTopActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".surfaceviews.SurfaceViewActivity" />
         <activity
             android:name=".task.SingleTaskActivity"
             android:launchMode="singleInstance" />
@@ -92,7 +96,19 @@
         <activity android:name=".test1.RecyclerViewWebActivity" />
         <activity android:name="android.support.v7.widget.helper.mvp.test.MVPActivity" />
         <activity android:name="android.support.v7.widget.helper.mvp.test.TestActivity"/>
-        <activity android:name=".thread_demo.ThreadDemoActivity"/>
+        <activity android:name=".reflection.ReflectionActivity"/>
+        <activity android:name=".view.TextActivity"/>
+<!--        <service android:name=".notification.MyNotification"
+            android:priority="1000"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+        <intent-filter>
+        <action
+            android:name="android.service.notification.NotificationListenerService" />
+        </intent-filter>
+        </service>-->
+        <receiver android:name=".brocastreceiver.MyBroadcastReceiver"/>
+
+
 
     </application>
 

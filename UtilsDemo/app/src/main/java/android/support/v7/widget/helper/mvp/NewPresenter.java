@@ -1,5 +1,6 @@
 package android.support.v7.widget.helper.mvp;
 
+import android.content.Context;
 import android.os.Message;
 import android.support.v7.widget.helper.mvp.base.BasePresenter;
 import android.support.v7.widget.helper.mvp.bean.MVP1Bean;
@@ -37,6 +38,7 @@ public class NewPresenter implements BasePresenter {
     private String TAG = "NewPresenter";
     private NewView newsView;
     private Disposable disposable;
+    private Context context;
 
     public NewPresenter(NewView newsView) {
         if (newsView == null) {
@@ -88,7 +90,7 @@ public class NewPresenter implements BasePresenter {
         //rxJavaConcat();
         //rxJavaMerge();
         //mergeInterval();
-        zip();
+        //zip();
     }
 
     @Override

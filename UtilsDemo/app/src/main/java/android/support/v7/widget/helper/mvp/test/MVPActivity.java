@@ -1,8 +1,11 @@
 package android.support.v7.widget.helper.mvp.test;
 
 import android.app.Activity;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,10 +29,13 @@ import java.util.List;
  */
 
 public class MVPActivity extends Activity implements NewView{
-    private final String TAG="MVPActivity";
+    private final String TAG="NewPresenter";
     private List<Object> objectList;
     private Adapter1<Object> adapter1;
     private NewPresenter newPresenter;
+    private Handler childHandler;
+    private MyThread myThread;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,13 +56,40 @@ public class MVPActivity extends Activity implements NewView{
         recyclerView.setAdapter(adapter1);
         newPresenter.netWorkData();
         String [] names={"1","2","3"};
+        myThread = new MyThread();
+        myThread.start();
 
+
+
+    }
+
+    class MyThread extends Thread{
+        Looper childLooper;
+        @Override
+        public void run() {
+            super.run();
+            Looper.prepare();//创建与当前线程相关的Looper
+            childLooper=Looper.myLooper();//获取Looper对象
+            Looper.loop();////调用此方法，消息才会循环处理
+            Log.e(TAG,"====> run");
+
+
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         newPresenter.subscribe();
+        childHandler = new Handler(myThread.childLooper){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Log.e(TAG,"=========> "+Thread.currentThread().getName());
+                myThread.childLooper.quit();
+            }
+        };
+        childHandler.sendEmptyMessage(1);
     }
 
     @Override
@@ -88,5 +121,11 @@ public class MVPActivity extends Activity implements NewView{
     @Override
     public void netWorkError(Object object) {
         Log.e(TAG,"====>"+object.toString());
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        Log.e(TAG,"==========> finalize");
     }
 }

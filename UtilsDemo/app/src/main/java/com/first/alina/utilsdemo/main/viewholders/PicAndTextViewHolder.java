@@ -1,6 +1,5 @@
 package com.first.alina.utilsdemo.main.viewholders;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.SpannableString;
@@ -11,7 +10,6 @@ import com.first.alina.utilsdemo.R;
 import com.first.alina.utilsdemo.common.recyclerviews.BindLayout;
 import com.first.alina.utilsdemo.common.recyclerviews.ViewHolder;
 import com.first.alina.utilsdemo.main.bean.PicAndTextBean;
-import com.first.alina.utilsdemo.markets.Utils;
 import com.first.alina.utilsdemo.view.CusUnderLineSpan;
 
 import java.util.ArrayList;
@@ -53,7 +51,6 @@ public class PicAndTextViewHolder extends ViewHolder<PicAndTextBean>{
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utils.toMarket((Activity) context, "https://www.baidu.com/");
                 // startActivity(new Intent(MainActivity.this,TextViewActivity.class));
 
             }

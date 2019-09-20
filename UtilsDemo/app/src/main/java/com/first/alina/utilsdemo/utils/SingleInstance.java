@@ -5,7 +5,6 @@ import android.content.Context;
 /**
  * Created by alina on 2019/2/28.
  */
-
 public class SingleInstance {
     private static volatile SingleInstance instance;
 

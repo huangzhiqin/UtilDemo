@@ -23,6 +23,7 @@ public class DialogViewHolder extends ViewHolder<DialogBean>{
             @Override
             public void onClick(View v) {
                 context.startActivity(new Intent(context, FragmentActivity.class));
+
             }
         });
     }

@@ -2,22 +2,20 @@ package com.first.alina.utilsdemo;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.widget.Toast;
 
 import com.first.alina.utilsdemo.common.recyclerviews.ViewHolder;
 import com.first.alina.utilsdemo.main.bean.BannerBean;
 import com.first.alina.utilsdemo.main.bean.BottomDialogBean;
-import com.first.alina.utilsdemo.main.bean.BrokenBean;
 import com.first.alina.utilsdemo.main.bean.CanvasBean;
 import com.first.alina.utilsdemo.main.bean.CustomFloatBean;
 import com.first.alina.utilsdemo.main.bean.Dialog2Bean;
+import com.first.alina.utilsdemo.main.bean.DialogBean;
 import com.first.alina.utilsdemo.main.bean.FloatScrollViewBean;
 import com.first.alina.utilsdemo.main.bean.FloatViewBean;
 import com.first.alina.utilsdemo.main.bean.ImageBean;
@@ -27,20 +25,17 @@ import com.first.alina.utilsdemo.main.bean.MultipleBean;
 import com.first.alina.utilsdemo.main.bean.NoPaddingBean;
 import com.first.alina.utilsdemo.main.bean.PicAndTextBean;
 import com.first.alina.utilsdemo.main.bean.RatingBarBean;
+import com.first.alina.utilsdemo.main.bean.ReflectionBean;
 import com.first.alina.utilsdemo.main.bean.ScaleImageBean;
 import com.first.alina.utilsdemo.main.bean.ScrollUpDownBean;
 import com.first.alina.utilsdemo.main.bean.SideSlipBean;
 import com.first.alina.utilsdemo.main.bean.SoftKeyBean;
-import com.first.alina.utilsdemo.main.bean.ThreadBean;
-import com.first.alina.utilsdemo.main.bean.View1Bean;
 import com.first.alina.utilsdemo.main.viewholders.BannerViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.BottomDialogViewHolder;
-import com.first.alina.utilsdemo.main.viewholders.BrokenViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.CanvasViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.CustomFloatViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.Dialog2ViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.DialogViewHolder;
-import com.first.alina.utilsdemo.main.bean.DialogBean;
 import com.first.alina.utilsdemo.main.viewholders.FloatScrollViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.FloatViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.ImageViewHolder;
@@ -50,12 +45,11 @@ import com.first.alina.utilsdemo.main.viewholders.MultipleViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.NoPaddingTextViewViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.PicAndTextViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.RatingBarViewHolder;
+import com.first.alina.utilsdemo.main.viewholders.ReflectionViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.ScaleImageViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.ScrollUpDownViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.SideSlipViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.SoftKeyViewHolder;
-import com.first.alina.utilsdemo.main.viewholders.ThreadViewHolder;
-import com.first.alina.utilsdemo.main.viewholders.View1ViewHolder;
 import com.first.alina.utilsdemo.scrollview.adapters.Adapter1;
 
 import java.util.ArrayList;
@@ -67,11 +61,13 @@ public class MainActivity extends AppCompatActivity {
     private List<Object> list = new ArrayList<>();
     private Adapter1<Object> adapter1;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         adapter1 = new Adapter1<Object>(this) {
             @Override
@@ -88,12 +84,8 @@ public class MainActivity extends AppCompatActivity {
                     return CanvasViewHolder.class;
                 } else if (object instanceof BannerBean) {
                     return BannerViewHolder.class;
-                } else if (object instanceof View1Bean) {
-                    return View1ViewHolder.class;
                 } else if (object instanceof MultipleBean) {
                     return MultipleViewHolder.class;
-                } else if (object instanceof BrokenBean) {
-                    return BrokenViewHolder.class;
                 } else if (object instanceof MVPBean) {
                     return MVPViewHolder.class;
                 } else if (object instanceof ScaleImageBean) {
@@ -118,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
                     return BottomDialogViewHolder.class;
                 }else if (object instanceof NoPaddingBean){
                   return NoPaddingTextViewViewHolder.class;
-              }else if (object instanceof ThreadBean){
-                  return ThreadViewHolder.class;
+              }else if (object instanceof ReflectionBean){
+                  return ReflectionViewHolder.class;
               }
                 return null;
             }
@@ -130,9 +122,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new FloatViewBean());
         list.add(new CanvasBean());
         list.add(new BannerBean());
-        list.add(new View1Bean());
         list.add(new MultipleBean());
-        list.add(new BrokenBean());
         list.add(new MVPBean());
         list.add(new ScaleImageBean());
         list.add(new FloatScrollViewBean());
@@ -144,12 +134,13 @@ public class MainActivity extends AppCompatActivity {
         list.add(new SideSlipBean());
         list.add(new CustomFloatBean());
         list.add(new NoPaddingBean());
-        list.add(new ThreadBean());
         list.add(new BottomDialogBean());
+        list.add(new ReflectionBean());
 
         adapter1.addData(list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter1);
+        //WindowsManager.getInstance().showFloatView(this);
 
     }
 
@@ -164,6 +155,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Log.e(TAG, "==> onStart");
+       /* IntentFilter intentFilter=new IntentFilter();
+        MyBroadcastReceiver myBroadcast=new MyBroadcastReceiver();
+        registerReceiver(myBroadcast,intentFilter);*/
 
     }
 
