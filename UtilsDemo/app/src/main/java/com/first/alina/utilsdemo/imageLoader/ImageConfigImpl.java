@@ -1,5 +1,6 @@
-package com.first.alina.utilsdemo.image_loader;
+package com.first.alina.utilsdemo.imageLoader;
 
+import android.os.Build;
 import android.widget.ImageView;
 
 /**
@@ -7,8 +8,9 @@ import android.widget.ImageView;
  */
 
 public class ImageConfigImpl extends ImageConfig{
-    private int blurValue;//图片模糊度
-    private int imageRadius;//图片圆角
+    public int blurValue;//图片模糊度
+    public int imageRadius;//图片圆角
+    public boolean circleCrop;//圆形
 
     private ImageConfigImpl(Builder builder){
         this.url=builder.url;
@@ -17,6 +19,8 @@ public class ImageConfigImpl extends ImageConfig{
         this.imageRadius=builder.imageRadius;
         this.errorHolder=builder.errorHolder;
         this.placeHolder=builder.placeHolder;
+        this.skipMemoryCache=builder.skipMemoryCache;
+        this.circleCrop=builder.circleCrop;
     }
 
     public static Builder builder(){
@@ -30,6 +34,8 @@ public class ImageConfigImpl extends ImageConfig{
         private ImageView imageView;
         private int imageRadius;
         private int blurValue;
+        private boolean skipMemoryCache;
+        public boolean circleCrop;//圆形
         public Builder url(String url){
             this.url=url;
             return this;
@@ -55,8 +61,18 @@ public class ImageConfigImpl extends ImageConfig{
             return this;
         }
 
+        public Builder skipMemoryCache(boolean skip){
+            this.skipMemoryCache=skip;
+            return this;
+        }
+
         public Builder blurValue(int blurValue){
             this.blurValue=blurValue;
+            return this;
+        }
+
+        public Builder circleCrop(boolean circleCrop){
+            this.circleCrop=circleCrop;
             return this;
         }
         public ImageConfigImpl build(){

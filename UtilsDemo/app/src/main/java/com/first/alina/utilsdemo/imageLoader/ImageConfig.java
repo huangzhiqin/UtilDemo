@@ -1,4 +1,4 @@
-package com.first.alina.utilsdemo.image_loader;
+package com.first.alina.utilsdemo.imageLoader;
 
 import android.widget.ImageView;
 
@@ -11,6 +11,7 @@ public class ImageConfig {
     protected ImageView imageView;
     protected int placeHolder;//占位符
     protected int errorHolder;//加载错误图片
+    protected boolean skipMemoryCache;//跳过内存缓存
 
     public String getUrl(){
         return url;
