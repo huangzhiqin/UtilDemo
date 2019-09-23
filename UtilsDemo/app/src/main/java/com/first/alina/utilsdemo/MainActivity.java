@@ -10,40 +10,28 @@ import android.util.Log;
 import android.view.KeyEvent;
 
 import com.first.alina.utilsdemo.common.recyclerviews.ViewHolder;
-import com.first.alina.utilsdemo.main.bean.BannerBean;
-import com.first.alina.utilsdemo.main.bean.CanvasBean;
 import com.first.alina.utilsdemo.main.bean.CustomViewBean;
 import com.first.alina.utilsdemo.main.bean.DialogBean;
 import com.first.alina.utilsdemo.main.bean.FloatMainBean;
 import com.first.alina.utilsdemo.main.bean.FloatScrollViewBean;
 import com.first.alina.utilsdemo.main.bean.ImageBean;
 import com.first.alina.utilsdemo.main.bean.MVPBean;
-import com.first.alina.utilsdemo.main.bean.MoveCommentBean;
 import com.first.alina.utilsdemo.main.bean.MultipleBean;
-import com.first.alina.utilsdemo.main.bean.NoPaddingBean;
 import com.first.alina.utilsdemo.main.bean.PicAndTextBean;
-import com.first.alina.utilsdemo.main.bean.RatingBarBean;
 import com.first.alina.utilsdemo.main.bean.ReflectionBean;
 import com.first.alina.utilsdemo.main.bean.ScaleImageBean;
-import com.first.alina.utilsdemo.main.bean.ScrollUpDownBean;
 import com.first.alina.utilsdemo.main.bean.SideSlipBean;
 import com.first.alina.utilsdemo.main.bean.SoftKeyBean;
-import com.first.alina.utilsdemo.main.viewholders.BannerViewHolder;
-import com.first.alina.utilsdemo.main.viewholders.CanvasViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.CustomViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.DialogViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.FloatMainViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.FloatScrollViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.ImageViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.MVPViewHolder;
-import com.first.alina.utilsdemo.main.viewholders.MoveCommentViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.MultipleViewHolder;
-import com.first.alina.utilsdemo.main.viewholders.NoPaddingTextViewViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.PicAndTextViewHolder;
-import com.first.alina.utilsdemo.main.viewholders.RatingBarViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.ReflectionViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.ScaleImageViewHolder;
-import com.first.alina.utilsdemo.main.viewholders.ScrollUpDownViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.SideSlipViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.SoftKeyViewHolder;
 import com.first.alina.utilsdemo.scrollview.adapters.Adapter1;
@@ -53,17 +41,16 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
-    private RecyclerView recyclerView;
     private List<Object> list = new ArrayList<>();
-    private Adapter1<Object> adapter1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        adapter1 = new Adapter1<Object>(this) {
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        Adapter1<Object> adapter1 = new Adapter1<Object>(this) {
             @Override
             public Class<? extends ViewHolder> getHolderClass(Object object, int position) {
                if (object instanceof PicAndTextBean) {
