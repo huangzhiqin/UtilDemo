@@ -43,7 +43,6 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".VideoActivity" />
 
         <service android:name=".DownLoadAdService" />
 
@@ -81,9 +80,9 @@
         <activity android:name=".scrollview.activitys.ScaleScrollActivity" />
         <activity android:name=".ImageLoaderActivity" />
         <activity android:name=".dialogs.BottomDialogActivity" />
-        <activity android:name=".kline.BrokenLine1Activity" />
+
         <activity android:name=".view.WebViewActivity" />
-        <activity android:name=".view.ViewActivity" />
+
         <activity android:name=".banner.BannerActivity" />
         <activity android:name=".view.CanvasActivity" />
         <activity
@@ -98,6 +97,10 @@
         <activity android:name="android.support.v7.widget.helper.mvp.test.TestActivity"/>
         <activity android:name=".reflection.ReflectionActivity"/>
         <activity android:name=".view.TextActivity"/>
+        <activity android:name=".dialogs.DialogActivity"/>
+        <activity android:name=".floatview.FloatMainActivity"/>
+        <activity android:name=".customview.CustomViewMainActivity"/>
+        <activity android:name=".customview.NoPaddingActivity"/>
 <!--        <service android:name=".notification.MyNotification"
             android:priority="1000"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
@@ -107,8 +110,6 @@
         </intent-filter>
         </service>-->
         <receiver android:name=".brocastreceiver.MyBroadcastReceiver"/>
-
-
 
     </application>
 

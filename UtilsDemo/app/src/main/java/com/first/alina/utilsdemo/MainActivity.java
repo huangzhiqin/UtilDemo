@@ -11,13 +11,11 @@ import android.view.KeyEvent;
 
 import com.first.alina.utilsdemo.common.recyclerviews.ViewHolder;
 import com.first.alina.utilsdemo.main.bean.BannerBean;
-import com.first.alina.utilsdemo.main.bean.BottomDialogBean;
 import com.first.alina.utilsdemo.main.bean.CanvasBean;
-import com.first.alina.utilsdemo.main.bean.CustomFloatBean;
-import com.first.alina.utilsdemo.main.bean.Dialog2Bean;
+import com.first.alina.utilsdemo.main.bean.CustomViewBean;
 import com.first.alina.utilsdemo.main.bean.DialogBean;
+import com.first.alina.utilsdemo.main.bean.FloatMainBean;
 import com.first.alina.utilsdemo.main.bean.FloatScrollViewBean;
-import com.first.alina.utilsdemo.main.bean.FloatViewBean;
 import com.first.alina.utilsdemo.main.bean.ImageBean;
 import com.first.alina.utilsdemo.main.bean.MVPBean;
 import com.first.alina.utilsdemo.main.bean.MoveCommentBean;
@@ -31,13 +29,11 @@ import com.first.alina.utilsdemo.main.bean.ScrollUpDownBean;
 import com.first.alina.utilsdemo.main.bean.SideSlipBean;
 import com.first.alina.utilsdemo.main.bean.SoftKeyBean;
 import com.first.alina.utilsdemo.main.viewholders.BannerViewHolder;
-import com.first.alina.utilsdemo.main.viewholders.BottomDialogViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.CanvasViewHolder;
-import com.first.alina.utilsdemo.main.viewholders.CustomFloatViewHolder;
-import com.first.alina.utilsdemo.main.viewholders.Dialog2ViewHolder;
+import com.first.alina.utilsdemo.main.viewholders.CustomViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.DialogViewHolder;
+import com.first.alina.utilsdemo.main.viewholders.FloatMainViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.FloatScrollViewHolder;
-import com.first.alina.utilsdemo.main.viewholders.FloatViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.ImageViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.MVPViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.MoveCommentViewHolder;
@@ -66,24 +62,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         adapter1 = new Adapter1<Object>(this) {
             @Override
             public Class<? extends ViewHolder> getHolderClass(Object object, int position) {
-              if (object instanceof DialogBean) {
-                    return DialogViewHolder.class;
-                } else if (object instanceof Dialog2Bean) {
-                    return Dialog2ViewHolder.class;
-                } else if (object instanceof PicAndTextBean) {
+               if (object instanceof PicAndTextBean) {
                     return PicAndTextViewHolder.class;
-                } else if (object instanceof FloatViewBean) {
-                    return FloatViewHolder.class;
-                } else if (object instanceof CanvasBean) {
-                    return CanvasViewHolder.class;
-                } else if (object instanceof BannerBean) {
-                    return BannerViewHolder.class;
                 } else if (object instanceof MultipleBean) {
                     return MultipleViewHolder.class;
                 } else if (object instanceof MVPBean) {
@@ -94,48 +78,34 @@ public class MainActivity extends AppCompatActivity {
                     return FloatScrollViewHolder.class;
                 } else if (object instanceof ImageBean) {
                     return ImageViewHolder.class;
-                } else if (object instanceof ScrollUpDownBean) {
-                    return ScrollUpDownViewHolder.class;
-                } else if (object instanceof MoveCommentBean) {
-                    return MoveCommentViewHolder.class;
-                } else if (object instanceof RatingBarBean) {
-                    return RatingBarViewHolder.class;
-                } else if (object instanceof SoftKeyBean) {
+                }  else if (object instanceof SoftKeyBean) {
                     return SoftKeyViewHolder.class;
                 } else if (object instanceof SideSlipBean) {
                     return SideSlipViewHolder.class;
-                } else if (object instanceof CustomFloatBean) {
-                    return CustomFloatViewHolder.class;
-                } else if (object instanceof BottomDialogBean) {
-                    return BottomDialogViewHolder.class;
-                }else if (object instanceof NoPaddingBean){
-                  return NoPaddingTextViewViewHolder.class;
-              }else if (object instanceof ReflectionBean){
+                } else if (object instanceof ReflectionBean){
                   return ReflectionViewHolder.class;
-              }
-                return null;
+              }else if (object instanceof DialogBean) {
+                    return DialogViewHolder.class;
+                }else if (object instanceof FloatMainBean){
+                   return FloatMainViewHolder.class;
+               }else if (object instanceof CustomViewBean){
+                   return CustomViewHolder.class;
+               }
+                    return null;
             }
         };
         list.add(new DialogBean());
-        list.add(new Dialog2Bean());
         list.add(new PicAndTextBean());
-        list.add(new FloatViewBean());
-        list.add(new CanvasBean());
-        list.add(new BannerBean());
+        list.add(new SoftKeyBean());
         list.add(new MultipleBean());
         list.add(new MVPBean());
         list.add(new ScaleImageBean());
         list.add(new FloatScrollViewBean());
         list.add(new ImageBean());
-        list.add(new ScrollUpDownBean());
-        list.add(new MoveCommentBean());
-        list.add(new RatingBarBean());
-        list.add(new SoftKeyBean());
         list.add(new SideSlipBean());
-        list.add(new CustomFloatBean());
-        list.add(new NoPaddingBean());
-        list.add(new BottomDialogBean());
         list.add(new ReflectionBean());
+        list.add(new FloatMainBean());
+        list.add(new CustomViewBean());
 
         adapter1.addData(list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
