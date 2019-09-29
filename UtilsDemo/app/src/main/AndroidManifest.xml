@@ -32,8 +32,8 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
         <activity android:name=".DialogsActivity" />
@@ -48,7 +48,7 @@
 
         <activity android:name=".floatview.FloatActivity" />
         <activity android:name=".floatview.CutomFloatActivity" />
-        <activity android:name=".RatingBarActivity" />
+        <activity android:name=".customview.RatingBarActivity" />
 
         <activity
             android:name=".test.activity.ChattingUnresolvedActivity"
@@ -101,6 +101,7 @@
         <activity android:name=".floatview.FloatMainActivity"/>
         <activity android:name=".customview.CustomViewMainActivity"/>
         <activity android:name=".customview.NoPaddingActivity"/>
+        <activity android:name=".customview.UpdateViewPosActivity"/>
 <!--        <service android:name=".notification.MyNotification"
             android:priority="1000"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">

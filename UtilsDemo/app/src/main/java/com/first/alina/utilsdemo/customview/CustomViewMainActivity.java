@@ -4,7 +4,9 @@ import com.first.alina.utilsdemo.R;
 import com.first.alina.utilsdemo.base.BaseRecyclerViewActivity;
 import com.first.alina.utilsdemo.common.recyclerviews.ViewHolder;
 import com.first.alina.utilsdemo.customview.bean.CustomViewMainBean;
+import com.first.alina.utilsdemo.customview.bean.UpdateViewBean;
 import com.first.alina.utilsdemo.customview.viewholder.CustomViewMainViewHolder;
+import com.first.alina.utilsdemo.customview.viewholder.UpdateViewHolder;
 import com.first.alina.utilsdemo.main.bean.BannerBean;
 import com.first.alina.utilsdemo.main.bean.CanvasBean;
 import com.first.alina.utilsdemo.main.bean.MoveCommentBean;
@@ -29,6 +31,7 @@ public class CustomViewMainActivity extends BaseRecyclerViewActivity {
         list.add(new MoveCommentBean());
         list.add(new CanvasBean());
         list.add(new BannerBean());
+        list.add(new UpdateViewBean());
         addAdapterData(list);
 
     }
@@ -47,6 +50,8 @@ public class CustomViewMainActivity extends BaseRecyclerViewActivity {
             return CanvasViewHolder.class;
         }else if (object instanceof BannerBean) {
             return BannerViewHolder.class;
+        }else if (object instanceof UpdateViewBean){
+            return UpdateViewHolder.class;
         }
         return null;
     }

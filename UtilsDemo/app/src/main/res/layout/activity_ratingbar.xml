@@ -15,6 +15,26 @@
     bao:ratingHeight="27dp"
     android:layout_width="wrap_content"
     android:layout_centerInParent="true"
-    android:layout_height="wrap_content">
-    ></com.first.alina.utilsdemo.widget.RatingBarView>
+    android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#55ffaa">
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#ffffaa"
+            android:text="快跑"/>
+    </LinearLayout>
+
+    <com.first.alina.utilsdemo.customview.widget.CircleImageView
+        android:id="@+id/circle_img"
+        android:layout_marginTop="100dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
 </RelativeLayout>
