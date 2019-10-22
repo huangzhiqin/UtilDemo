@@ -17,6 +17,7 @@ import com.first.alina.utilsdemo.main.bean.FloatScrollViewBean;
 import com.first.alina.utilsdemo.main.bean.ImageBean;
 import com.first.alina.utilsdemo.main.bean.MVPBean;
 import com.first.alina.utilsdemo.main.bean.MultipleBean;
+import com.first.alina.utilsdemo.main.bean.OkHttpBean;
 import com.first.alina.utilsdemo.main.bean.PicAndTextBean;
 import com.first.alina.utilsdemo.main.bean.ReflectionBean;
 import com.first.alina.utilsdemo.main.bean.ScaleImageBean;
@@ -29,6 +30,7 @@ import com.first.alina.utilsdemo.main.viewholders.FloatScrollViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.ImageViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.MVPViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.MultipleViewHolder;
+import com.first.alina.utilsdemo.main.viewholders.OkHttpViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.PicAndTextViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.ReflectionViewHolder;
 import com.first.alina.utilsdemo.main.viewholders.ScaleImageViewHolder;
@@ -77,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                    return FloatMainViewHolder.class;
                }else if (object instanceof CustomViewBean){
                    return CustomViewHolder.class;
+               }else if (object instanceof OkHttpBean){
+                   return OkHttpViewHolder.class;
                }
                     return null;
             }
@@ -93,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new ReflectionBean());
         list.add(new FloatMainBean());
         list.add(new CustomViewBean());
+        list.add(new OkHttpBean());
 
         adapter1.addData(list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

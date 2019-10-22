@@ -102,6 +102,7 @@
         <activity android:name=".customview.CustomViewMainActivity"/>
         <activity android:name=".customview.NoPaddingActivity"/>
         <activity android:name=".customview.UpdateViewPosActivity"/>
+        <activity android:name=".okhttp.OkhttpActivity"/>
 <!--        <service android:name=".notification.MyNotification"
             android:priority="1000"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
